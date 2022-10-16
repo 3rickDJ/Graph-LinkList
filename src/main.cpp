@@ -23,7 +23,8 @@ int main() {
         cout << " 3. Son adjacentes" << endl;
         cout << " 4. Mostrar nodos" << endl;
         cout << " 5. Mostrar adjacencia (dado un nodo)" << endl;
-        cout << " 6. Salir" << endl;
+        cout << " 6. Recorrido a lo ancho" << endl;
+        cout << " 7. Salir" << endl;
         cout << " Ingrese una opcion: ";
         cin >> opt;
         cout << endl;
@@ -64,15 +65,21 @@ int main() {
             break;
         case 5:
             // mostarAdjacencia
-            cout << "Elemento a: ";
+            cout << "Nodo a: ";
             cin >> elmA;
             lista.imprimirAdj(elmA);
             break;
         case 6:
+            //Recorrido a lo ancho
+            cout << "Nodo inicial a: ";
+            cin >> elmA;
+            lista.pathWidth(elmA);
+            break;
+        case 7:
             break;
         default:
-            opt = 6;
+            opt = 7;
             cout << "Opcion no valida.\nSaliendo\n";
         }
-    } while (opt != 6);
+    } while (opt != 7);
 }
