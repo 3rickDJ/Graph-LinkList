@@ -23,40 +23,6 @@ void List::imprimirAdj(int elm) {
     // recorrer cada nodo mientras no apuntemos a nulo
     NodeAdj::printList(p->adj);
 }
-/* void List::eliminarPrimero() { */
-/*     if (listaVacia()) { */
-/*         // verificar si esta vacia */
-/*         std::cout << "No hay elementos.\n"; */
-/*     } else { */
-/*         NodeGraph *p = pList; */
-/*         // apuntar al siguiente elemento */
-/*         pList = pList->next; */
-/*         // eliminar el primer elemento */
-/*         free(p); */
-/*     } */
-/* } */
-/* void List::eliminarUltimo() { */
-/*     NodeGraph *p = pList; */
-/*     // si esta vacio no podemos acceder a p->next->next */
-/*     // nos da un error */
-/*     if (listaVacia()) { */
-/*         // si esta vacia mandar mensaje */
-/*         std::cout << "No hay elementos.\n"; */
-/*     } else if (p->next == 0) { */
-/*         free(p); */
-/*         pList = 0; */
-/*     } else { */
-/*         // iterar hasta llegar al penultimo nodo */
-/*         while (p->next->next != 0) { */
-/*             // siguiente nodo */
-/*             p = p->next; */
-/*         } */
-/*         // liberar el ultimo nodo */
-/*         free(p->next); */
-/*         // ultimo nodo apuntando a null */
-/*         p->next = 0; */
-/*     } */
-/* } */
 bool List::listaVacia() {
     // lista no tiene elementos si apunta a nullo
     return pList == nullptr;
@@ -80,8 +46,7 @@ void List::addAdj(NodeGraph *nodoGrafo, int elm) {
     nuevoNodo->value = elm;
     if(nodoGrafo->adj == nullptr){
         nodoGrafo->adj = nuevoNodo;
-    }
-    if(nodoGrafo->adj != nullptr){
+    }else {
         NodeAdj* iterator = nodoGrafo->adj;
         while(iterator->next !=nullptr){
             iterator = iterator->next;
