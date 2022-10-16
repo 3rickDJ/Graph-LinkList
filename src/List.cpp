@@ -1,4 +1,3 @@
-#pragma once
 #include "List.h"
 #include "NodeGraph.h"
 #include "NodeAdj.h"
