@@ -6,4 +6,6 @@ class NodeAdj {
     NodeAdj *next;
     //initializer
     NodeAdj();
+    static NodeAdj* find(NodeAdj* inicio, int elm);
+    static void printList(NodeAdj* inicio);
 };

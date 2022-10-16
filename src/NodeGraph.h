@@ -9,8 +9,10 @@ class NodeGraph {
     NodeGraph *next;
     //initializer
     NodeGraph();
-    //print all adjacency list
-    void printAdj();
     //true if elm is in adj, otherwise false
     bool isAdj(int elm);
+    //print all adjacency list
+    void printAdj();
+    static NodeGraph* find(NodeGraph* inicio, int elm);
+    static void printList(NodeGraph* inicio);
 };

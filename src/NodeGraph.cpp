@@ -11,32 +11,32 @@ NodeGraph::NodeGraph() {
     next = nullptr;
 }
 void NodeGraph::printAdj() {
-    NodeAdj *p = adj;
-    // recorrer cada nodo mientras no apuntemos a nulo
-    while (p != 0) {
-        // imprimir el valor del i-esimo nodo
-        std::cout << " |" << p->value;
-        // pasar al siguiente nodo
-        p = p->next;
-    }
-    // imprimir enter final
-    if (p == 0) {
-        cout << " Lista de adjacencia vacia\n";
-    } else {
-        // imprimir salto de line del while
-        cout << "|\n";
-    }
+    NodeAdj::printList(adj);
 }
+//retorna true si tiene adyacencia, falso de otra forma
 bool NodeGraph::isAdj(int elm) {
-    // buscar si esta el elemento elm, en adj y retornar el resultado
-    NodeAdj *p = adj;
-    while (p != 0) {
-        //si se encuentra se corta la iteracion
-        if (p->value == elm) {
-            return true;
+    //buscar elm en adj
+    return NodeAdj::find(adj,elm)==nullptr;
+}
+NodeGraph* NodeGraph::find(NodeGraph* inicio, int elm){
+    NodeGraph* p = inicio;
+    while(p!=nullptr){
+        if(p->value==elm){
+            return p;
         }
         p = p->next;
     }
-    //se recorrio la lista entera sin coincidencias
-    return false;
+    return p;
+}
+void NodeGraph::printList(NodeGraph* inicio){
+    NodeGraph* p = inicio;
+    if(p==nullptr){
+        cout << "No hay datos en la lista";
+    }else{
+        while(p!=nullptr){
+            std::cout << "["<<p->value<<"] ->";
+            p=p->next;
+        }
+        std::cout <<"\n";
+    }
 }
