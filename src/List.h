@@ -11,6 +11,7 @@ class List {
     void eliminarPrimero();
     void eliminarUltimo();
     bool listaVacia();
+
   public:
     List();
 

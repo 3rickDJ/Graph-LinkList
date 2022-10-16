@@ -7,12 +7,12 @@ class NodeGraph {
     int visited;
     NodeAdj *adj;
     NodeGraph *next;
-    //initializer
+    // initializer
     NodeGraph();
-    //true if elm is in adj, otherwise false
+    // true if elm is in adj, otherwise false
     bool isAdj(int elm);
-    //print all adjacency list
+    // print all adjacency list
     void printAdj();
-    static NodeGraph* find(NodeGraph* inicio, int elm);
-    static void printList(NodeGraph* inicio);
+    static NodeGraph *find(NodeGraph *inicio, int elm);
+    static void printList(NodeGraph *inicio);
 };

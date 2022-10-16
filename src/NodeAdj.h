@@ -4,8 +4,8 @@ class NodeAdj {
   public:
     int value;
     NodeAdj *next;
-    //initializer
+    // initializer
     NodeAdj();
-    static NodeAdj* find(NodeAdj* inicio, int elm);
-    static void printList(NodeAdj* inicio);
+    static NodeAdj *find(NodeAdj *inicio, int elm);
+    static void printList(NodeAdj *inicio);
 };
