@@ -4,16 +4,16 @@
 #include <cstdlib>
 #include <iostream>
 using std::cout;
-template <typename T> class List {
-    T *pList;
+class List {
+    NodeGraph *pList;
 
   public:
     List() {
         // inicializar el apuntador en nullo
         pList = nullptr;
     }
-    T *find(int elm) {
-        T *p;
+    NodeGraph* find(int elm) {
+        NodeGraph *p=pList;
         while (p != 0 && (p->value != elm)) {
             p = p->next;
         }
@@ -25,8 +25,8 @@ template <typename T> class List {
     }
     void insertarInicio(int x) {
         // variable auxiliar
-        T *p;
-        p = (T *)malloc(sizeof(T));
+        NodeGraph *p;
+        p = (NodeGraph *)malloc(sizeof(NodeGraph));
         // asignar valor al nodo
         p->value = x;
         // linkear nodo a la lista
@@ -40,14 +40,14 @@ template <typename T> class List {
             // por si es el primer elemento
             insertarInicio(x);
         } else {
-            T *p = pList;
+            NodeGraph *p = pList;
             // avanzar al siguiente nodo mientras no sea el ultimo
             while (p->next != 0) {
                 p = p->next;
             }
             // encontrando el ultimo nodo
             // obtenemos espacio para el siguiente nodo
-            p->next = (T *)malloc(sizeof(T));
+            p->next = (NodeGraph *)malloc(sizeof(NodeGraph));
             // ultimo elemento apunta a nulo
             p->next->next = 0;
             // asignar el valor del ultimo elemento
@@ -55,7 +55,7 @@ template <typename T> class List {
         }
     }
     void imprimir() {
-        T *p = pList;
+       NodeGraph  *p = pList;
         // recorrer cada nodo mientras no apuntemos a nulo
         while (p != 0) {
             // imprimir el valor del i-esimo nodo
@@ -67,7 +67,7 @@ template <typename T> class List {
         std::cout << "\n";
     }
     void imprimirAdj(int elm) {
-        T *p = find(elm);
+        NodeGraph *p = find(elm);
         // recorrer cada nodo mientras no apuntemos a nulo
         cout <<"Nodos adyacentes a "<<elm<<" son:\n";
         while (p != 0) {
@@ -84,7 +84,7 @@ template <typename T> class List {
             // verificar si esta vacia
             std::cout << "No hay elementos.\n";
         } else {
-            T *p = pList;
+            NodeGraph *p = pList;
             // apuntar al siguiente elemento
             pList = pList->next;
             // eliminar el primer elemento
@@ -92,7 +92,7 @@ template <typename T> class List {
         }
     }
     void eliminarUltimo() {
-        T *p = pList;
+        NodeGraph *p = pList;
         // si esta vacio no podemos acceder a p->next->next
         // nos da un error
         if (listaVacia()) {
@@ -119,7 +119,7 @@ template <typename T> class List {
     }
 
     bool isAdj(int elmA, int elm) {
-        T *p = pList;
+        NodeGraph *p = pList;
         // recorrer cada nodo mientras no apuntemos a nulo o encontremos elmA
         while (p != 0 && (p->value != elmA)) {
             // pasar al siguiente nodo
@@ -132,14 +132,14 @@ template <typename T> class List {
         return p->isAdj(elm);
     }
     void addAdjacency(int elmA, int elm) {
-        T *p = find(elmA);
+        NodeGraph *p = find(elmA);
         if (p == 0) {
             cout << "Nodo " << elmA << " no encontrado\n";
         } else {
             addEndAdj(p, elm);
         }
     }
-    void addEndAdj(T *nodoGrafo, int elm) {
+    void addEndAdj(NodeGraph *nodoGrafo, int elm) {
         NodeAdj *p = nodoGrafo->adj;
         NodeAdj *nuevoAdj = (NodeAdj *)malloc(sizeof(NodeAdj));
         nuevoAdj->value = elm;

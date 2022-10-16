@@ -7,7 +7,7 @@ using std::cout;
 using std::endl;
 int main(){
     int opt, elm, elmA;
-    List<NodeGraph> lista;
+    List lista;
     do{
     cout << "================================================================================" <<endl;
     cout << "                                     MENU                                       " <<endl;
