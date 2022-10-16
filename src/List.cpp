@@ -19,6 +19,7 @@ void List::imprimir() { NodeGraph::printList(pList); }
 void List::imprimirAdj(int elm) {
     NodeGraph *p = NodeGraph::find(pList, elm);
     // recorrer cada nodo mientras no apuntemos a nulo
+    cout << "["<<elm<<"]\n |\n V\n";
     NodeAdj::printList(p->adj);
 }
 bool List::listaVacia() {
