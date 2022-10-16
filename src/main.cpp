@@ -16,7 +16,7 @@ int main(){
     cout << " 2. Añadir adjacencia "<<endl;
     cout << " 3. Son adjacentes"<<endl;
     cout << " 4. Mostrar nodos"<<endl;
-    cout << " 5. Mostrar adjacencia "<<endl;
+    cout << " 5. Mostrar adjacencia (dado un nodo)"<<endl;
     cout << " 6. Salir"<<endl;
     cout << " Ingrese una opcion: ";
     cin >> opt;
@@ -28,7 +28,7 @@ int main(){
             //preguntar Elemento a insertar
             cout << "Elemento a insertar: " ;
             cin >> elm;
-            lista.insertarInicio(elm);
+            lista.insertarNodo(elm);
             break;
         case 2:
             //Añadir adjacencia
