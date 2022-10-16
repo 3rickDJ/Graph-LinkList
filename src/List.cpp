@@ -2,7 +2,9 @@
 #include "ADTQueue.h"
 #include "NodeAdj.h"
 #include "NodeGraph.h"
+#include <iostream>
 using std::cout;
+using std::endl;
 List::List() {
     // inicializar el apuntador en nullo
     pList = nullptr;
@@ -23,9 +25,12 @@ void List::insertarNodo(int x) {
 void List::imprimir() { NodeGraph::printList(pList); }
 void List::imprimirAdj(int elm) {
     NodeGraph *p = NodeGraph::find(pList, elm);
-    // recorrer cada nodo mientras no apuntemos a nulo
-    cout << "[" << elm << "]\n |\n V\n";
-    NodeAdj::printList(p->adj);
+    if(p==nullptr){
+        cout << "Nodo no encontrado\n";
+    }else{
+        cout << "[" << elm << "]\n |\n V\n";
+        NodeAdj::printList(p->adj);
+    }
 }
 bool List::listaVacia() {
     // lista no tiene elementos si apunta a nullo
