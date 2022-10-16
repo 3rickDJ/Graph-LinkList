@@ -9,4 +9,5 @@ public:
     int desencolar();
     //obtener el primer elemento de la cola sin eliminarlo
     int primero();
+    void imprimir();
 };

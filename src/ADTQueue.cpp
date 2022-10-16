@@ -1,4 +1,5 @@
 #include "ADTQueue.h"
+#include <iostream>
 // insertar un elemento al final de la cola
 void Queue::encolar(int elm) {
     NodeAdj *p = new NodeAdj();
@@ -21,9 +22,22 @@ int Queue::desencolar() {
         int tmp = queue->value;
         NodeAdj *tmpQ = queue;
         queue = queue->next;
-        delete(tmpQ);
+        free(tmpQ);
         return tmp;
     }
 }
 // obtener el primer elemento de la cola sin eliminarlo
-int Queue::primero() { return queue->value; }
+int Queue::primero() {
+    if(queue==nullptr){
+        return 0;
+    }else{
+        return queue->value; }
+    }
+
+void Queue::imprimir() {
+    NodeAdj *iter = queue;
+    while (iter != nullptr) {
+        std::cout << "[" << iter->value << "]..";
+        iter = iter->next;
+    }
+}
