@@ -1,4 +1,5 @@
 #include "List.h"
+#include "ADTQueue.h"
 #include "NodeAdj.h"
 #include "NodeGraph.h"
 using std::cout;
@@ -65,3 +66,44 @@ void List::addAdj(NodeGraph *nodoGrafo, int elm) {
         iterator->next = nuevoNodo;
     }
 }
+void List::pathWidth(int elm) {
+
+    NodeGraph *p = NodeGraph::find(pList, elm);
+    if (p == nullptr) {
+        cout << "El nodo " << elm << " no esta registrado\n";
+    } else {
+        printWidthPath(p);
+    }
+}
+
+void List::printWidthPath(NodeGraph *p) {
+    Queue cola;
+    NodeGraph x;
+    NodeAdj* y;
+    marcarVisitado(p);
+    cola.encolar(p->value);
+    while (cola.primero() != 0) {
+        x.value = cola.desencolar();
+        cout << "[" << x.value << "]--";
+        // para cada nodo adyacente a x
+        // ubicar nodo
+        p = NodeGraph::find(pList, x.value);
+        NodeAdj *iterator = p->adj;
+        while (iterator != nullptr) {
+            y = iterator;
+            if (!isVisited(y)) {
+                marcarVisitado(y);
+                cola.encolar(y->value);
+            }
+            iterator = iterator->next;
+        }
+    }
+}
+void List::marcarVisitado(NodeAdj *p) {
+    NodeGraph::find(pList, p->value)->visited = 1;
+}
+bool List::isVisited(NodeAdj *p) {
+    return NodeGraph::find(pList, p->value)->visited == 1;
+}
+void List::marcarVisitado(NodeGraph *p) { p->visited = 1; }
+bool List::isVisited(NodeGraph *p) { return p->visited == 1; }

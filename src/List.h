@@ -11,6 +11,11 @@ class List {
     void eliminarPrimero();
     void eliminarUltimo();
     bool listaVacia();
+    void printWidthPath(NodeGraph *inicio);
+    void marcarVisitado(NodeAdj *p);
+    void marcarVisitado(NodeGraph *p);
+    bool isVisited(NodeAdj *p);
+    bool isVisited(NodeGraph *p);
 
   public:
     List();
@@ -21,5 +26,6 @@ class List {
     bool isAdj(int elmA, int elm);
     void addAdjacency(int elmA, int elm);
     void addAdj(NodeGraph *nodoGrafo, int elm);
-    /* void addEndAdj(NodeGraph *nodoGrafo, int elm); */
+    // imprime el camino a lo ancho iniciando en elm
+    void pathWidth(int elm);
 };

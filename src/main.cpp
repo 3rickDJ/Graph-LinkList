@@ -1,6 +1,5 @@
 // incluir header de la clase List
 #include "List.h"
-#include "NodeGraph.h"
 #include "iostream"
 using std::cin;
 using std::cout;
