@@ -3,6 +3,7 @@
 class Queue{
 public:
     NodeAdj* queue;
+    Queue();
     //insertar un elemento al final de la cola
     void encolar(int elm);
     //recuperar y eliminar un elemento al inicio de la cola

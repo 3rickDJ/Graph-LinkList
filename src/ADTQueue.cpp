@@ -1,5 +1,8 @@
 #include "ADTQueue.h"
 #include <iostream>
+Queue::Queue(){
+    queue = nullptr;
+}
 // insertar un elemento al final de la cola
 void Queue::encolar(int elm) {
     NodeAdj *p = new NodeAdj();
