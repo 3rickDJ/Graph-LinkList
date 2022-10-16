@@ -25,9 +25,9 @@ void List::insertarNodo(int x) {
 void List::imprimir() { NodeGraph::printList(pList); }
 void List::imprimirAdj(int elm) {
     NodeGraph *p = NodeGraph::find(pList, elm);
-    if(p==nullptr){
+    if (p == nullptr) {
         cout << "Nodo no encontrado\n";
-    }else{
+    } else {
         cout << "[" << elm << "]\n |\n V\n";
         NodeAdj::printList(p->adj);
     }
@@ -83,26 +83,30 @@ void List::pathWidth(int elm) {
 
 void List::printWidthPath(NodeGraph *p) {
     Queue cola;
+    NodeGraph *aux = p;
     NodeGraph x;
-    NodeAdj* y;
+    /* NodeAdj *y; */
     marcarVisitado(p);
-    cola.encolar(p->value);
+    int valor2;
+    int valor = p->value;
+    cola.encolar(valor);
     while (cola.primero() != 0) {
-        x.value = cola.desencolar();
-        cout << "[" << x.value << "]--";
+        valor = cola.desencolar();
+        cout << "[" << valor << "] - ";
         // para cada nodo adyacente a x
         // ubicar nodo
-        p = NodeGraph::find(pList, x.value);
-        NodeAdj *iterator = p->adj;
+        aux = NodeGraph::find(pList, valor);
+        NodeAdj *iterator = aux->adj;
         while (iterator != nullptr) {
-            y = iterator;
-            if (!isVisited(y)) {
-                marcarVisitado(y);
-                cola.encolar(y->value);
+            valor2 = iterator->value;
+            if (!isVisited(valor2)) {
+                marcarVisitado(valor2);
+                cola.encolar(valor2);
             }
             iterator = iterator->next;
         }
     }
+    cout << "\n\n";
 }
 void List::marcarVisitado(NodeAdj *p) {
     NodeGraph::find(pList, p->value)->visited = 1;
@@ -112,3 +116,9 @@ bool List::isVisited(NodeAdj *p) {
 }
 void List::marcarVisitado(NodeGraph *p) { p->visited = 1; }
 bool List::isVisited(NodeGraph *p) { return p->visited == 1; }
+void List::marcarVisitado(int elm){
+    NodeGraph::find(pList,elm)->visited=1;
+}
+bool List::isVisited(int elm){
+    return NodeGraph::find(pList,elm)->visited==1;
+}

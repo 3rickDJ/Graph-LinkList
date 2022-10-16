@@ -14,6 +14,8 @@ class List {
     void printWidthPath(NodeGraph *inicio);
     void marcarVisitado(NodeAdj *p);
     void marcarVisitado(NodeGraph *p);
+    void marcarVisitado(int elm);
+    bool isVisited(int elm);
     bool isVisited(NodeAdj *p);
     bool isVisited(NodeGraph *p);
 
