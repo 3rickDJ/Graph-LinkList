@@ -32,9 +32,10 @@ int main(){
             break;
         case 2:
             //Añadir adjacencia
-            cout << "Elemento a: " ;
+            cout << "AUI SE PARA?\n";
+            cout << "Elemento a: \n" ;
             cin >> elmA;
-            cout << "Elemento b: " ;
+            cout << "Elemento b: \n" ;
             cin >> elm;
             lista.addAdjacency(elmA, elm);
             break;

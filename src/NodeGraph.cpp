@@ -16,7 +16,7 @@ void NodeGraph::printAdj() {
 //retorna true si tiene adyacencia, falso de otra forma
 bool NodeGraph::isAdj(int elm) {
     //buscar elm en adj
-    return NodeAdj::find(adj,elm)==nullptr;
+    return NodeAdj::find(adj,elm)!=nullptr;
 }
 NodeGraph* NodeGraph::find(NodeGraph* inicio, int elm){
     NodeGraph* p = inicio;

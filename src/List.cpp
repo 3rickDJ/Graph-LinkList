@@ -6,7 +6,7 @@ List::List() {
     // inicializar el apuntador en nullo
     pList = nullptr;
 }
-void List::insertarInicio(int x) {
+void List::insertarNodo(int x) {
     // variable auxiliar
     NodeGraph *p = new NodeGraph();
     // asignar valor al nodo
@@ -14,27 +14,6 @@ void List::insertarInicio(int x) {
     // linkear nodo a la lista
     p->next = pList;
     pList = p;
-}
-void List::insertarFinal(int x) {
-    // si esta vacio no podemos acceder a p->next->next
-    // nos da un error
-    if (listaVacia()) {
-        // por si es el primer elemento
-        insertarInicio(x);
-    } else {
-        NodeGraph *p = pList;
-        // avanzar al siguiente nodo mientras no sea el ultimo
-        while (p->next != 0) {
-            p = p->next;
-        }
-        // encontrando el ultimo nodo
-        // obtenemos espacio para el siguiente nodo
-        p->next = new NodeGraph();
-        // ultimo elemento apunta a nulo
-        p->next->next = 0;
-        // asignar el valor del ultimo elemento
-        p->next->value = x;
-    }
 }
 void List::imprimir() {
     NodeGraph::printList(pList);
@@ -97,6 +76,19 @@ void List::addAdjacency(int elmA, int elm) {
     }
 }
 void List::addAdj(NodeGraph *nodoGrafo, int elm) {
+    NodeAdj* nuevoNodo = new NodeAdj();
+    nuevoNodo->value = elm;
+    if(nodoGrafo->adj == nullptr){
+        nodoGrafo->adj = nuevoNodo;
+    }
+    if(nodoGrafo->adj != nullptr){
+        NodeAdj* iterator = nodoGrafo->adj;
+        while(iterator->next !=nullptr){
+            iterator = iterator->next;
+        }
+        iterator->next = nuevoNodo;
+
+    }
     NodeAdj *p = nodoGrafo->adj;
     NodeAdj *nuevoAdj = new NodeAdj();
     nuevoAdj->value = elm;
