@@ -84,8 +84,6 @@ void List::pathWidth(int elm) {
 void List::printWidthPath(NodeGraph *p) {
     Queue cola;
     NodeGraph *aux = p;
-    NodeGraph x;
-    /* NodeAdj *y; */
     marcarVisitado(p);
     int valor2;
     int valor = p->value;
@@ -107,6 +105,7 @@ void List::printWidthPath(NodeGraph *p) {
         }
     }
     cout << "\n\n";
+    restoreVisited();
 }
 void List::marcarVisitado(NodeAdj *p) {
     NodeGraph::find(pList, p->value)->visited = 1;
@@ -116,9 +115,15 @@ bool List::isVisited(NodeAdj *p) {
 }
 void List::marcarVisitado(NodeGraph *p) { p->visited = 1; }
 bool List::isVisited(NodeGraph *p) { return p->visited == 1; }
-void List::marcarVisitado(int elm){
-    NodeGraph::find(pList,elm)->visited=1;
+void List::marcarVisitado(int elm) { NodeGraph::find(pList, elm)->visited = 1; }
+bool List::isVisited(int elm) {
+    return NodeGraph::find(pList, elm)->visited == 1;
 }
-bool List::isVisited(int elm){
-    return NodeGraph::find(pList,elm)->visited==1;
+
+void List::restoreVisited() {
+    NodeGraph *iter = pList;
+    while (iter != nullptr) {
+        iter->visited = 0;
+        iter = iter->next;
+    }
 }

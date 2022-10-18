@@ -18,6 +18,7 @@ class List {
     bool isVisited(int elm);
     bool isVisited(NodeAdj *p);
     bool isVisited(NodeGraph *p);
+    void restoreVisited();
 
   public:
     List();
