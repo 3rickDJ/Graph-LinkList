@@ -145,7 +145,7 @@ void List::printDepthPath(NodeGraph *p) {
     cout << "\n\n";
     restoreVisited();
 }
-
+//Aqui se realiza la busqueda por profundidad
 void List::bpp(NodeGraph * p){
     marcarVisitado(p);
     cout << "["<< p->value<<"]  ";
