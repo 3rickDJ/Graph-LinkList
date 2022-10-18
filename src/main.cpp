@@ -9,13 +9,10 @@ int main() {
     List lista;
     do {
         cout << "=============================================================="
-                "=================="
              << endl;
         cout << "                                     MENU                     "
-                "                  "
              << endl;
         cout << "=============================================================="
-                "=================="
              << endl;
         cout << " 1. Insertar nodo" << endl;
         cout << " 2. Añadir adjacencia " << endl;
@@ -23,7 +20,8 @@ int main() {
         cout << " 4. Mostrar nodos" << endl;
         cout << " 5. Mostrar adjacencia (dado un nodo)" << endl;
         cout << " 6. Recorrido a lo ancho" << endl;
-        cout << " 7. Salir" << endl;
+        cout << " 7. Recorrido en profundidad" << endl;
+        cout << " 8. Salir" << endl;
         cout << " Ingrese una opcion: ";
         cin >> opt;
         cout << endl;
