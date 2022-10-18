@@ -5,8 +5,9 @@ using std::cin;
 using std::cout;
 using std::endl;
 int main() {
+		//Delcaramos nuestras variables para usar dentro del menu
     int opt, elm, elmA;
-    List lista;
+    List lista; //Con esto hacemos un llamado de la clase List a lista
     do {
         cout << "=============================================================="
              << endl;
@@ -32,15 +33,15 @@ int main() {
             // preguntar Elemento a insertar
             cout << "Elemento a insertar: ";
             cin >> elm;
-            lista.insertarNodo(elm);
+            lista.insertarNodo(elm); //con esto podemos llamar a la clase Lista como lista. y la funcion con el elemento enviado
             break;
         case 2:
-            // AÃ±adir adjacencia
+            // Añadir adjacencia
             cout << "Elemento a: \n";
-            cin >> elmA;
+            cin >> elmA;				 //Se necesita enviar el nodo donde se registrara la adyacencia
             cout << "Elemento b: \n";
-            cin >> elm;
-            lista.addAdjacency(elmA, elm);
+            cin >> elm;					// Y el que se el añadira a ese como el adyacente
+            lista.addAdjacency(elmA, elm);//Ahora llamamos a la funcion
             break;
         case 3:
             // preguntar por adjacencia
@@ -48,10 +49,12 @@ int main() {
             cin >> elmA;
             cout << "Elemento b: ";
             cin >> elm;
+                //Con esta funcion nos devuelve un valor donde si es true el elmA es adyacente a elmB
             if (lista.isAdj(elmA, elm)) {
                 cout << "Elemento a=" << elmA << " SI es adyacente a b=" << elm
                      << "\n";
-            } else {
+            }//Si no es que los elementos enviados no son adyacentes
+			 else {
                 cout << "Elemento a=" << elmA << " NO es adyacente a b=" << elm
                      << "\n";
             }
@@ -64,19 +67,19 @@ int main() {
             // mostarAdjacencia
             cout << "Nodo a: ";
             cin >> elmA;
-            lista.imprimirAdj(elmA);
+            lista.imprimirAdj(elmA);//Para mostrar la adyencencia se le envia el nodo que queramos imprimir sus adyacentes
             break;
         case 6:
             //Recorrido a lo ancho
             cout << "Nodo inicial a: ";
             cin >> elmA;
-            lista.pathWidth(elmA);
+            lista.pathWidth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por anchura
             break;
         case 7:
             //Recorrido a lo ancho
             cout << "Nodo inicial a: ";
             cin >> elmA;
-            lista.pathDepth(elmA);
+            lista.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
         case 8:
             break;
