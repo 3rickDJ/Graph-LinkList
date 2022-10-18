@@ -19,6 +19,8 @@ class List {
     bool isVisited(NodeAdj *p);
     bool isVisited(NodeGraph *p);
     void restoreVisited();
+    void printDepthPath(NodeGraph *p);
+    void bpp(NodeGraph *p);
 
   public:
     List();
@@ -31,4 +33,5 @@ class List {
     void addAdj(NodeGraph *nodoGrafo, int elm);
     // imprime el camino a lo ancho iniciando en elm
     void pathWidth(int elm);
+    void pathDepth(int elmInicial);
 };

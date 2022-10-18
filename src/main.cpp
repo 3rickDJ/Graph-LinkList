@@ -73,10 +73,16 @@ int main() {
             lista.pathWidth(elmA);
             break;
         case 7:
+            //Recorrido a lo ancho
+            cout << "Nodo inicial a: ";
+            cin >> elmA;
+            lista.pathDepth(elmA);
+            break;
+        case 8:
             break;
         default:
-            opt = 7;
+            opt = 8;
             cout << "Opcion no valida.\nSaliendo\n";
         }
-    } while (opt != 7);
+    } while (opt != 8);
 }

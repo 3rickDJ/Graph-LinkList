@@ -127,3 +127,34 @@ void List::restoreVisited() {
         iter = iter->next;
     }
 }
+
+void List::pathDepth(int elmInicial) {
+    // dado un elemento inicial imprime el recorrido en profundidad
+    NodeGraph *p = NodeGraph::find(pList, elmInicial);
+    if (p == nullptr) {
+        cout << "Nodo :" << elmInicial << " no encontrado" << endl;
+    } else {
+        printDepthPath(p);
+    }
+}
+
+void List::printDepthPath(NodeGraph *p) {
+    if (!isVisited(p)) {
+        bpp(p);
+    }
+    cout << "\n\n";
+    restoreVisited();
+}
+
+void List::bpp(NodeGraph * p){
+    marcarVisitado(p);
+    cout << "["<< p->value<<"]  ";
+    //para cada nodo w adyacente a v hacer
+    NodeAdj * iter = p->adj;
+    while(iter != nullptr){
+        if(!isVisited(iter)){
+            bpp(NodeGraph::find(pList, iter->value));
+        }
+        iter=iter->next;
+    }
+}
