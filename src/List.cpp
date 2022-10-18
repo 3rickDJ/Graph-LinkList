@@ -165,7 +165,7 @@ bool List::isVisited(int elm) {  return NodeGraph::find(pList, elm)->visited == 
 
 //Restauramos los campos de visitados a 0
 void List::restoreVisited() {
-	//Definimos un nuevo puntero con el valor de pList
+	//Definimos un puntero con el valor de pList
     NodeGraph *iter = pList;
     //Mientras tenga datos
     while (iter != nullptr) {
@@ -175,33 +175,46 @@ void List::restoreVisited() {
     }
 }
 
+ // dado un elemento inicial imprime el recorrido en profundidad
 void List::pathDepth(int elmInicial) {
-    // dado un elemento inicial imprime el recorrido en profundidad
+	//Declaramos un puntero con el valor de la funcion dado pList y el elmInicial
     NodeGraph *p = NodeGraph::find(pList, elmInicial);
+    //Si p es igual a nullptr
     if (p == nullptr) {
+    	//Quiere decir que el nodo enviado no existe
         cout << "Nodo :" << elmInicial << " no encontrado" << endl;
     } else {
+    	//Llamamos a la funcion para el recorrido por profundidad enviando p
         printDepthPath(p);
     }
 }
 
+//Funcion para el recorrimiento dado un puntero (nodo) p
 void List::printDepthPath(NodeGraph *p) {
+	//Si el nodo no a sido visitado
     if (!isVisited(p)) {
+    	//Mandamos a llamar a la funcion
         bpp(p);
     }
     cout << "\n\n";
+    //Restauramos los campos de p visited a 0 para el nuevo recorrido
     restoreVisited();
 }
 //Aqui se realiza la busqueda por profundidad
 void List::bpp(NodeGraph * p){
+	//Mandamos a llamar a la funcion marcarVisitado con el puntero p
     marcarVisitado(p);
-    cout << "["<< p->value<<"]  ";
+    cout << "["<< p->value<<"]  "; //Imprimimos el valor
     //para cada nodo w adyacente a v hacer
-    NodeAdj * iter = p->adj;
-    while(iter != nullptr){
+    NodeAdj * iter = p->adj; //creamos un nuevo puntero donde guardara el/los valores de p en su campos adj
+    //Mientras sea diferente de nullptr
+	while(iter != nullptr){
+		//Si el iter no a sido visitado
         if(!isVisited(iter)){
+        	//Mandamos a llamar de nuevo a la funcion enviando NodeGraph para regresar un puntero y que la funcion lo acepte
             bpp(NodeGraph::find(pList, iter->value));
         }
+        //Recorremos la lista (iter)
         iter=iter->next;
     }
 }
