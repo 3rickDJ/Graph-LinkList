@@ -7,29 +7,29 @@ using std::cout;
 using std::endl;
 Graph::Graph() {
     // inicializar el apuntador en nullo
-    pList = nullptr;
+    pGraph = nullptr;
 }
 void Graph::insertarNodo(int x) {
-    if (NodeGraph::find(pList, x) == nullptr) {
+    if (NodeGraph::find(pGraph, x) == nullptr) {
         // variable auxiliar
         NodeGraph *p = new NodeGraph();
         // asignar valor al nodo
         p->value = x;
         // linkear nodo a la lista
-        p->next = pList;
+        p->next = pGraph;
         //Y hacemos que PList sea igual a p
-        pList = p;
+        pGraph = p;
     } else {
         cout << "Elemento repetido\n";
     }
 }
 
-//Mandamos a llamar la funcion de NodeGraph con el/los valores que tiene pList
-void Graph::imprimir() { NodeGraph::printList(pList); }
+//Mandamos a llamar la funcion de NodeGraph con el/los valores que tiene pGraph
+void Graph::imprimir() { NodeGraph::printList(pGraph); }
 //Ahora imprimimos la adjacencia con el elemento
 void Graph::imprimirAdj(int elm) {
-	//Definimos un puntero donde este sea igual al valor que nos devuelve la funcion NodeGraph con pList y el elm
-    NodeGraph *p = NodeGraph::find(pList, elm);
+	//Definimos un puntero donde este sea igual al valor que nos devuelve la funcion NodeGraph con pGraph y el elm
+    NodeGraph *p = NodeGraph::find(pGraph, elm);
     //Si este es igual a nullptr 
     if (p == nullptr) {
     	//Quiere decir que el nodo no existe 
@@ -46,20 +46,20 @@ void Graph::imprimirAdj(int elm) {
 //Esto nos de vuelve 1 o 0(nullptr)
 bool Graph::listaVacia() {
     // Si lista no tiene elementos quiere decir que apunta a nullo
-    return pList == nullptr;
+    return pGraph == nullptr;
 }
 
 bool Graph::isAdj(int elmA, int elm) {
-	//Definimos un puntero con el valor que devuelve la funcion dado pList y el elmA
-    NodeGraph *p = NodeGraph::find(pList, elmA);
+	//Definimos un puntero con el valor que devuelve la funcion dado pGraph y el elmA
+    NodeGraph *p = NodeGraph::find(pGraph, elmA);
     // verificar si el nodo del grafo es adjacente a elm
     return p->isAdj(elm);
 }
 
 //Esta funcion a�ade una adyacencia
 void Graph::addAdjacency(int elmA, int elm, int peso) {
-	//Definimos un puntero con el valor que devuelve la funcion dado pList y elmA
-    NodeGraph *p = NodeGraph::find(pList, elmA);
+	//Definimos un puntero con el valor que devuelve la funcion dado pGraph y elmA
+    NodeGraph *p = NodeGraph::find(pGraph, elmA);
     // se encontro nodo elmA en nodoGrafo
     if (p == nullptr) {
         cout << "Nodo " << elmA << " no encontrado\n";
@@ -67,7 +67,7 @@ void Graph::addAdjacency(int elmA, int elm, int peso) {
     } else if (NodeAdj::find(p->adj, elm) != nullptr) {
         cout << "Elemento " << elm << " ya se encuentra registrado\n";
         // no se encontro elm en lista de nodoGrafo
-    } else if (NodeGraph::find(pList, elm) == nullptr) {
+    } else if (NodeGraph::find(pGraph, elm) == nullptr) {
         cout << "Elemento " << elm << " no es un nodo (agregalo)\n";
     } else {
         // si es un Nodo en grafo y no ha sido registrado -> crear nodo
@@ -103,8 +103,8 @@ void Graph::addAdj(NodeGraph *nodoGrafo, int elm, int peso) {
 }
 
 void Graph::pathWidth(int elm) {
-	//Creamos un puntero con el valor de la funcion NodeGraph con los valores de pList y elm
-    NodeGraph *p = NodeGraph::find(pList, elm);
+	//Creamos un puntero con el valor de la funcion NodeGraph con los valores de pGraph y elm
+    NodeGraph *p = NodeGraph::find(pGraph, elm);
     //Si p es igual nullptr
     if (p == nullptr) {
     	//No hay elementos
@@ -131,7 +131,7 @@ void Graph::printWidthPath(NodeGraph *p) {
         cout << "[" << valor << "] - ";
         // para cada nodo adyacente a x
         // ubicar nodo
-        aux = NodeGraph::find(pList, valor);
+        aux = NodeGraph::find(pGraph, valor);
         NodeAdj *iterator = aux->adj;	//Definimos un nuevo apuntador con el valor de aux en su campo adj
         //Mientras tenga datos
 		while (iterator != nullptr) {
@@ -155,21 +155,21 @@ void Graph::printWidthPath(NodeGraph *p) {
 
 //Dado un puntero marcamos como visitado en su campo visited
 void Graph::marcarVisitado(NodeAdj *p) {
-    NodeGraph::find(pList, p->value)->visited = 1;
+    NodeGraph::find(pGraph, p->value)->visited = 1;
 }
 //Aqui comprobamos si esta visitado ese puntero
 bool Graph::isVisited(NodeAdj *p) {
-    return NodeGraph::find(pList, p->value)->visited == 1;
+    return NodeGraph::find(pGraph, p->value)->visited == 1;
 }
 void Graph::marcarVisitado(NodeGraph *p) { p->visited = 1; } //Marcamos el nodo como visitado
 bool Graph::isVisited(NodeGraph *p) { return p->visited == 1; } //Si se cumple que el campo de p es igual a 1 se regresa true
-void Graph::marcarVisitado(int elm) { NodeGraph::find(pList, elm)->visited = 1; } //Marcamos como visitado el elm
-bool Graph::isVisited(int elm) {  return NodeGraph::find(pList, elm)->visited == 1;} //Verficamos si el elm esta visitado
+void Graph::marcarVisitado(int elm) { NodeGraph::find(pGraph, elm)->visited = 1; } //Marcamos como visitado el elm
+bool Graph::isVisited(int elm) {  return NodeGraph::find(pGraph, elm)->visited == 1;} //Verficamos si el elm esta visitado
 
 //Restauramos los campos de visitados a 0
 void Graph::restoreVisited() {
-	//Definimos un puntero con el valor de pList
-    NodeGraph *iter = pList;
+	//Definimos un puntero con el valor de pGraph
+    NodeGraph *iter = pGraph;
     //Mientras tenga datos
     while (iter != nullptr) {
     	//El valor de iter en el campo visited es igual a 
@@ -180,8 +180,8 @@ void Graph::restoreVisited() {
 
  // dado un elemento inicial imprime el recorrido en profundidad
 void Graph::pathDepth(int elmInicial) {
-	//Declaramos un puntero con el valor de la funcion dado pList y el elmInicial
-    NodeGraph *p = NodeGraph::find(pList, elmInicial);
+	//Declaramos un puntero con el valor de la funcion dado pGraph y el elmInicial
+    NodeGraph *p = NodeGraph::find(pGraph, elmInicial);
     //Si p es igual a nullptr
     if (p == nullptr) {
     	//Quiere decir que el nodo enviado no existe
@@ -215,7 +215,7 @@ void Graph::bpp(NodeGraph * p){
 		//Si el iter no a sido visitado
         if(!isVisited(iter)){
         	//Mandamos a llamar de nuevo a la funcion enviando NodeGraph para regresar un puntero y que la funcion lo acepte
-            bpp(NodeGraph::find(pList, iter->value));
+            bpp(NodeGraph::find(pGraph, iter->value));
         }
         //Recorremos la lista (iter)
         iter=iter->next;

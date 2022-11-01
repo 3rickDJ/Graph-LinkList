@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 class Graph {
-    NodeGraph *pList; //Delcaramos un nuevo puntero llamado pList
+    NodeGraph *pGraph; //Delcaramos un nuevo puntero llamado pGraph
     
 	//Esta funcion inserta un elemento al inicio enviado un entero
     void insertarInicio(int x);
@@ -78,4 +78,5 @@ class Graph {
     // imprime el camino a lo ancho iniciando en elmInicial
     void pathDepth(int elmInicial);
     void TREEPRIM(int i);
+    NodeGraph *getNoVisited();
 };
