@@ -4,6 +4,7 @@ class NodeAdj {
   public:
     int value; //Con esto guardamos un valor 
     NodeAdj *next; //Con esto podremos apuntar al siguiente nodo
+    int weight;
     // initializer
     NodeAdj(); 
     //Esta funcion es para encontrar si habra adyacencia con el nodo (puntero) enviado y el elemento solicitado

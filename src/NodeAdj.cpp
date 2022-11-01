@@ -1,4 +1,5 @@
 #include "NodeAdj.h"
+#include <climits>
 #include <iostream>
 using std::cout;
 
@@ -7,6 +8,8 @@ NodeAdj::NodeAdj() {
     value = 0;
     //Ahora tambien el puntero next igual NULLPTR
     next = nullptr;
+    weight = INT_MAX;
+
 }
 
 //Ahora dado un nodo y un elemento encontraremos la adyacencia
