@@ -91,8 +91,8 @@ int main() {
             graph.TREEPRIM(elmA);
             break;
         default:
-            opt = 8;
+            opt = 9;
             cout << "Opcion no valida.\nSaliendo\n";
         }
-    } while (opt != 8);
+    } while (opt != 9);
 }
