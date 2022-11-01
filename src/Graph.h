@@ -79,4 +79,8 @@ class Graph {
     void pathDepth(int elmInicial);
     void TREEPRIM(int i);
     NodeGraph *getNoVisited();
+    int leastWeight(NodeAdj *pAdj);
+    void changeLeastWeight(int value, int weight);
+    void changeLeastEdge(int value, int menorArista);
+    void restoreLeastWeight();
 };

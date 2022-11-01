@@ -2,6 +2,7 @@
 #include "ADTQueue.h"
 #include "NodeAdj.h"
 #include "NodeGraph.h"
+#include <climits>
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -221,4 +222,104 @@ void Graph::bpp(NodeGraph * p){
         iter=iter->next;
     }
 }
-void Graph::TREEPRIM(int i) {}
+//fUNCION PARA EL ARBOL RECORRIDO MINIMO prim
+void Graph::TREEPRIM(int i) {
+    //Creamos un nuevo grafo para agregar el recorrido
+    Graph tree;
+    //hasta que todos los nodos hayan sido visitados
+    NodeGraph * v = NodeGraph::find(pGraph,i);
+    bool primero = true;
+    while(getNoVisited()!= nullptr){
+        if(primero){
+            primero = false;
+        }else{
+            v = getNoVisited();
+        }
+        //marcar como visitado
+        v->visited = 1;
+        //anadir v a F
+        tree.insertarNodo(v->value);
+        //para cada arista w adyacente a v
+        NodeAdj * w = v->adj;
+        while (w!= nullptr){
+            //si w no ha sido visitado y el peso de la arista es menor al peso minimo asociado al nodo
+            if(!isVisited(w) && (w->weight < leastWeight(w))){
+                //peso minimo asociado al nodo w, es igual al peso de la arista
+                changeLeastWeight(w->value, w->weight);
+                //arista de menor peso asociado a w, es igual a la arista v-w
+                changeLeastEdge(w->value, v->value);
+            }
+            w = w->next;
+        }
+    }
+    NodeGraph * iter = pGraph;
+    //Recorremos la lista
+    while (iter!= nullptr){
+        //Definimo w con el menor nodo
+        int w = iter->leastNode;
+        //A v con el menor valor
+        int v = iter->value;
+        //Y a weight con el menor peso del grafo
+        int weight = iter->leastWeight;
+        //Si el peso es diferente de a leastNode esto quiere decir que es el primero
+        if(weight!=-1){
+            //Añadimos la adyacencia de v a w y w a v
+            tree.addAdjacency(v, w, weight);
+            tree.addAdjacency(w, v, weight);
+        }
+        //Recorremos el grafo
+        iter = iter->next;
+    }
+
+    iter = pGraph;
+    int index =0;
+    while (iter!= nullptr){
+        index+= 1;
+        tree.imprimirAdj(index);
+    }
+    //Restauramos los valores
+    restoreVisited();
+    restoreLeastWeight();
+}
+
+
+// retorna la primera direccion de memoria de un elemento no visitado
+// si todos los elementos han sido visitados, retorna nullptr
+NodeGraph *Graph::getNoVisited() {
+    NodeGraph *iter = pGraph;
+    //Recorremos hasta que no quede ningun valor en el grafo
+    while(iter!= nullptr){
+        //Si iter en su campo visitado es igual a 0 quiere decir que no ha sido visitado el nodo
+        if(iter->visited==0){
+            return iter;
+        }
+        //Recorremos
+        iter = iter->next;
+    }
+    //Si ninguno fue no visitado regresamos null
+    return nullptr;
+}
+//le pasas un nodo w, y te retorna su menor peso asociado
+int Graph::leastWeight(NodeAdj *pAdj) {
+    NodeGraph *p = NodeGraph::find(pGraph, pAdj->value);
+    return p->leastWeight;
+}
+void Graph::changeLeastWeight(int value, int weight) {
+    NodeGraph *p = NodeGraph::find(pGraph, value);
+    p->leastWeight = weight;
+}
+void Graph::changeLeastEdge(int nodo, int menorArista) {
+    NodeGraph *p = NodeGraph::find(pGraph, nodo);
+    p->leastNode = menorArista;
+}
+void Graph::restoreLeastWeight() {
+    //Definimos un puntero con el valor de pGraph
+    NodeGraph *iter = pGraph;
+    //Mientras tenga datos
+    while (iter != nullptr) {
+        //El valor de iter en el campo visited es igual a
+        iter->leastWeight = INT_MAX;
+        iter->leastNode = -1;
+        iter = iter->next; //Recorremos la lista (iter)
+    }
+}

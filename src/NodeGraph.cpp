@@ -11,7 +11,7 @@ NodeGraph::NodeGraph() {
     adj = nullptr;
     next = nullptr;
     leastWeight = INT_MAX;
-    leastNode = 0;
+    leastNode = -1;
 
 }
 //Dentro de la funcion llamamos a la otra funcion enviando el puntero adj
