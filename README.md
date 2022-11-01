@@ -1,4 +1,4 @@
-# Linked List
+# Linked Graph
 
 ## Compilar el binario
 

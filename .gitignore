@@ -3,3 +3,5 @@ obj/*
 compile_commands.json
 .clang-format
 .cache
+.idea
+.vscode
