@@ -42,7 +42,8 @@ void NodeAdj::printList(NodeAdj *inicio) {
     	//Mientras sea diferente de nullptr
         while (p != nullptr) {
         	//Imprimimos el valor que existe en el campo value de p
-            std::cout << "[" << p->value << "] ->";
+            std::cout << "[" << p->value ;
+            std::cout << "|" << p->weight << "| ]->";
             //Recorremos la lista para que en algun punto se rompa el ciclo
             p = p->next;
         }

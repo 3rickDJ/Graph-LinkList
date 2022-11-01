@@ -57,7 +57,7 @@ bool Graph::isAdj(int elmA, int elm) {
 }
 
 //Esta funcion a�ade una adyacencia
-void Graph::addAdjacency(int elmA, int elm) {
+void Graph::addAdjacency(int elmA, int elm, int peso) {
 	//Definimos un puntero con el valor que devuelve la funcion dado pList y elmA
     NodeGraph *p = NodeGraph::find(pList, elmA);
     // se encontro nodo elmA en nodoGrafo
@@ -71,16 +71,19 @@ void Graph::addAdjacency(int elmA, int elm) {
         cout << "Elemento " << elm << " no es un nodo (agregalo)\n";
     } else {
         // si es un Nodo en grafo y no ha sido registrado -> crear nodo
-        addAdj(p, elm);
+        addAdj(p, elm, peso);
     }
 }
 
 //A�adimos un nodo adyacente
-void Graph::addAdj(NodeGraph *nodoGrafo, int elm) {
+void Graph::addAdj(NodeGraph *nodoGrafo, int elm, int peso) {
 	//Creamos un puntero con el valor de NodeAdj es decir un nuevo nodo de dos valores
     NodeAdj *nuevoNodo = new NodeAdj();
     //En su campo value ponemos el elemento
     nuevoNodo->value = elm;
+    //Aqui se le agrega un peso en su campo weigth
+    nuevoNodo->weight = peso;
+
     //Si en el nodoGrafo en su campo adj es igual a null quiere decir que no hay elementos por lo que 
     if (nodoGrafo->adj == nullptr) {
     	//Es el primero que se le a�ade 

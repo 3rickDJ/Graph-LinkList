@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 int main() {
 		//Delcaramos nuestras variables para usar dentro del menu
-    int opt, elm, elmA;
+    int opt, elm, elmA, weight;
     Graph graph; //Con esto hacemos un llamado de la clase Graph a graph
     do {
         cout << "=============================================================="
@@ -42,7 +42,9 @@ int main() {
             cin >> elmA;				 //Se necesita enviar el nodo donde se registrara la adyacencia
             cout << "Elemento b: \n";
             cin >> elm;					// Y el que se el a�adira a ese como el adyacente
-            graph.addAdjacency(elmA, elm);//Ahora llamamos a la funcion
+            cout << "Peso entre a y b\n";
+            cin >> weight;
+            graph.addAdjacency(elmA, elm, weight);//Ahora llamamos a la funcion
             break;
         case 3:
             // preguntar por adjacencia

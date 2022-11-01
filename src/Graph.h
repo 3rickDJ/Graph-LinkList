@@ -67,10 +67,10 @@ class Graph {
     bool isAdj(int elmA, int elm);
     
     //Esta funcion es para a�adir adyacencia con el elemA y el elm enviados
-    void addAdjacency(int elmA, int elm);
+    void addAdjacency(int elmA, int elm, int peso);
     
     //A�adimos un nodo adyacente
-    void addAdj(NodeGraph *nodoGrafo, int elm);
+    void addAdj(NodeGraph *nodoGrafo, int elm, int peso);
     
     // imprime el camino a lo ancho iniciando en elm
     void pathWidth(int elm);
