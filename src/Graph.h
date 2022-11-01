@@ -83,4 +83,5 @@ class Graph {
     void changeLeastWeight(int value, int weight);
     void changeLeastEdge(int value, int menorArista);
     void restoreLeastWeight();
+    NodeGraph *getLeastNoVisited();
 };

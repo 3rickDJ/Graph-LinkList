@@ -233,7 +233,7 @@ void Graph::TREEPRIM(int i) {
         if(primero){
             primero = false;
         }else{
-            v = getNoVisited();
+            v = getLeastNoVisited();
         }
         //marcar como visitado
         v->visited = 1;
@@ -262,7 +262,7 @@ void Graph::TREEPRIM(int i) {
         //Y a weight con el menor peso del grafo
         int weight = iter->leastWeight;
         //Si el peso es diferente de a leastNode esto quiere decir que es el primero
-        if(weight!=-1){
+        if(w!=-1){
             //Añadimos la adyacencia de v a w y w a v
             tree.addAdjacency(v, w, weight);
             tree.addAdjacency(w, v, weight);
@@ -276,6 +276,7 @@ void Graph::TREEPRIM(int i) {
     while (iter!= nullptr){
         index+= 1;
         tree.imprimirAdj(index);
+        iter = iter->next;
     }
     //Restauramos los valores
     restoreVisited();
@@ -322,4 +323,22 @@ void Graph::restoreLeastWeight() {
         iter->leastNode = -1;
         iter = iter->next; //Recorremos la lista (iter)
     }
+}
+//obtener el nodo que no ha sido visitado con el menor costo de conexion
+//retorna nullptr si todos los nodos estan visitados
+// retorna el pointer al nodo con el menor valor en leastWeight
+NodeGraph *Graph::getLeastNoVisited() {
+    NodeGraph * iter = pGraph;
+    //Digamos que el minCost sea hasta infinito
+    int minCost = INT_MAX;
+    //Direccion del elemento
+    NodeGraph * pMinCost = nullptr;
+    while (iter!=nullptr){
+        if(iter->visited == 0 && (iter->leastWeight < minCost) ){
+            pMinCost = iter;
+            minCost = iter->leastWeight;
+        }
+        iter = iter->next;
+    }
+    return pMinCost;
 }
