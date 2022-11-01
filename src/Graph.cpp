@@ -1,15 +1,15 @@
-#include "List.h"
+#include "Graph.h"
 #include "ADTQueue.h"
 #include "NodeAdj.h"
 #include "NodeGraph.h"
 #include <iostream>
 using std::cout;
 using std::endl;
-List::List() {
+Graph::Graph() {
     // inicializar el apuntador en nullo
     pList = nullptr;
 }
-void List::insertarNodo(int x) {
+void Graph::insertarNodo(int x) {
     if (NodeGraph::find(pList, x) == nullptr) {
         // variable auxiliar
         NodeGraph *p = new NodeGraph();
@@ -25,9 +25,9 @@ void List::insertarNodo(int x) {
 }
 
 //Mandamos a llamar la funcion de NodeGraph con el/los valores que tiene pList
-void List::imprimir() { NodeGraph::printList(pList); }
+void Graph::imprimir() { NodeGraph::printList(pList); }
 //Ahora imprimimos la adjacencia con el elemento
-void List::imprimirAdj(int elm) {
+void Graph::imprimirAdj(int elm) {
 	//Definimos un puntero donde este sea igual al valor que nos devuelve la funcion NodeGraph con pList y el elm
     NodeGraph *p = NodeGraph::find(pList, elm);
     //Si este es igual a nullptr 
@@ -44,20 +44,20 @@ void List::imprimirAdj(int elm) {
 }
 
 //Esto nos de vuelve 1 o 0(nullptr)
-bool List::listaVacia() {
+bool Graph::listaVacia() {
     // Si lista no tiene elementos quiere decir que apunta a nullo
     return pList == nullptr;
 }
 
-bool List::isAdj(int elmA, int elm) {
+bool Graph::isAdj(int elmA, int elm) {
 	//Definimos un puntero con el valor que devuelve la funcion dado pList y el elmA
     NodeGraph *p = NodeGraph::find(pList, elmA);
     // verificar si el nodo del grafo es adjacente a elm
     return p->isAdj(elm);
 }
 
-//Esta funcion añade una adyacencia
-void List::addAdjacency(int elmA, int elm) {
+//Esta funcion aï¿½ade una adyacencia
+void Graph::addAdjacency(int elmA, int elm) {
 	//Definimos un puntero con el valor que devuelve la funcion dado pList y elmA
     NodeGraph *p = NodeGraph::find(pList, elmA);
     // se encontro nodo elmA en nodoGrafo
@@ -75,15 +75,15 @@ void List::addAdjacency(int elmA, int elm) {
     }
 }
 
-//Añadimos un nodo adyacente
-void List::addAdj(NodeGraph *nodoGrafo, int elm) {
+//Aï¿½adimos un nodo adyacente
+void Graph::addAdj(NodeGraph *nodoGrafo, int elm) {
 	//Creamos un puntero con el valor de NodeAdj es decir un nuevo nodo de dos valores
     NodeAdj *nuevoNodo = new NodeAdj();
     //En su campo value ponemos el elemento
     nuevoNodo->value = elm;
     //Si en el nodoGrafo en su campo adj es igual a null quiere decir que no hay elementos por lo que 
     if (nodoGrafo->adj == nullptr) {
-    	//Es el primero que se le añade 
+    	//Es el primero que se le aï¿½ade 
         nodoGrafo->adj = nuevoNodo;
     } //Por lo menos tiene un dato
 		else {
@@ -94,12 +94,12 @@ void List::addAdj(NodeGraph *nodoGrafo, int elm) {
         	//Recorremos la lista (iterador)
             iterator = iterator->next;
         }
-        //En el campo next añadimos el nuevoNodo
+        //En el campo next aï¿½adimos el nuevoNodo
         iterator->next = nuevoNodo;
     }
 }
 
-void List::pathWidth(int elm) {
+void Graph::pathWidth(int elm) {
 	//Creamos un puntero con el valor de la funcion NodeGraph con los valores de pList y elm
     NodeGraph *p = NodeGraph::find(pList, elm);
     //Si p es igual nullptr
@@ -112,7 +112,7 @@ void List::pathWidth(int elm) {
     }
 }
 
-void List::printWidthPath(NodeGraph *p) {
+void Graph::printWidthPath(NodeGraph *p) {
 	//Definimos como llamaremos a la clase para sus funciones 
     Queue cola;
     NodeGraph *aux = p; //Un puntero aux con el valor de p
@@ -151,20 +151,20 @@ void List::printWidthPath(NodeGraph *p) {
 }
 
 //Dado un puntero marcamos como visitado en su campo visited
-void List::marcarVisitado(NodeAdj *p) {
+void Graph::marcarVisitado(NodeAdj *p) {
     NodeGraph::find(pList, p->value)->visited = 1;
 }
 //Aqui comprobamos si esta visitado ese puntero
-bool List::isVisited(NodeAdj *p) {
+bool Graph::isVisited(NodeAdj *p) {
     return NodeGraph::find(pList, p->value)->visited == 1;
 }
-void List::marcarVisitado(NodeGraph *p) { p->visited = 1; } //Marcamos el nodo como visitado
-bool List::isVisited(NodeGraph *p) { return p->visited == 1; } //Si se cumple que el campo de p es igual a 1 se regresa true
-void List::marcarVisitado(int elm) { NodeGraph::find(pList, elm)->visited = 1; } //Marcamos como visitado el elm
-bool List::isVisited(int elm) {  return NodeGraph::find(pList, elm)->visited == 1;} //Verficamos si el elm esta visitado
+void Graph::marcarVisitado(NodeGraph *p) { p->visited = 1; } //Marcamos el nodo como visitado
+bool Graph::isVisited(NodeGraph *p) { return p->visited == 1; } //Si se cumple que el campo de p es igual a 1 se regresa true
+void Graph::marcarVisitado(int elm) { NodeGraph::find(pList, elm)->visited = 1; } //Marcamos como visitado el elm
+bool Graph::isVisited(int elm) {  return NodeGraph::find(pList, elm)->visited == 1;} //Verficamos si el elm esta visitado
 
 //Restauramos los campos de visitados a 0
-void List::restoreVisited() {
+void Graph::restoreVisited() {
 	//Definimos un puntero con el valor de pList
     NodeGraph *iter = pList;
     //Mientras tenga datos
@@ -176,7 +176,7 @@ void List::restoreVisited() {
 }
 
  // dado un elemento inicial imprime el recorrido en profundidad
-void List::pathDepth(int elmInicial) {
+void Graph::pathDepth(int elmInicial) {
 	//Declaramos un puntero con el valor de la funcion dado pList y el elmInicial
     NodeGraph *p = NodeGraph::find(pList, elmInicial);
     //Si p es igual a nullptr
@@ -190,7 +190,7 @@ void List::pathDepth(int elmInicial) {
 }
 
 //Funcion para el recorrimiento dado un puntero (nodo) p
-void List::printDepthPath(NodeGraph *p) {
+void Graph::printDepthPath(NodeGraph *p) {
 	//Si el nodo no a sido visitado
     if (!isVisited(p)) {
     	//Mandamos a llamar a la funcion
@@ -201,7 +201,7 @@ void List::printDepthPath(NodeGraph *p) {
     restoreVisited();
 }
 //Aqui se realiza la busqueda por profundidad
-void List::bpp(NodeGraph * p){
+void Graph::bpp(NodeGraph * p){
 	//Mandamos a llamar a la funcion marcarVisitado con el puntero p
     marcarVisitado(p);
     cout << "["<< p->value<<"]  "; //Imprimimos el valor
@@ -218,3 +218,4 @@ void List::bpp(NodeGraph * p){
         iter=iter->next;
     }
 }
+void Graph::TREEPRIM(int i) {}

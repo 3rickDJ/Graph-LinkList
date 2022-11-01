@@ -3,7 +3,7 @@
 #include "NodeGraph.h"
 #include <cstdlib>
 #include <iostream>
-class List {
+class Graph {
     NodeGraph *pList; //Delcaramos un nuevo puntero llamado pList
     
 	//Esta funcion inserta un elemento al inicio enviado un entero
@@ -52,7 +52,7 @@ class List {
     void bpp(NodeGraph *p);
 
   public:
-    List();
+    Graph();
     
 	//Esta funcion imprime los nodos adyacentes, dado un elemento
     void imprimirAdj(int elm);
@@ -66,10 +66,10 @@ class List {
     //Esta funcion nos devuelve un 1 o 0 si el elmA es adyacente con el elm enviados
     bool isAdj(int elmA, int elm);
     
-    //Esta funcion es para añadir adyacencia con el elemA y el elm enviados
+    //Esta funcion es para aï¿½adir adyacencia con el elemA y el elm enviados
     void addAdjacency(int elmA, int elm);
     
-    //Añadimos un nodo adyacente
+    //Aï¿½adimos un nodo adyacente
     void addAdj(NodeGraph *nodoGrafo, int elm);
     
     // imprime el camino a lo ancho iniciando en elm
@@ -77,4 +77,5 @@ class List {
     
     // imprime el camino a lo ancho iniciando en elmInicial
     void pathDepth(int elmInicial);
+    void TREEPRIM(int i);
 };

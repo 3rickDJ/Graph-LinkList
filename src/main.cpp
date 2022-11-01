@@ -1,5 +1,5 @@
-// incluir header de la clase List
-#include "List.h"
+// incluir header de la clase Graph
+#include "Graph.h"
 #include "iostream"
 using std::cin;
 using std::cout;
@@ -7,7 +7,7 @@ using std::endl;
 int main() {
 		//Delcaramos nuestras variables para usar dentro del menu
     int opt, elm, elmA;
-    List lista; //Con esto hacemos un llamado de la clase List a lista
+    Graph graph; //Con esto hacemos un llamado de la clase Graph a graph
     do {
         cout << "=============================================================="
              << endl;
@@ -22,7 +22,8 @@ int main() {
         cout << " 5. Mostrar adjacencia (dado un nodo)" << endl;
         cout << " 6. Recorrido a lo ancho" << endl;
         cout << " 7. Recorrido en profundidad" << endl;
-        cout << " 8. Salir" << endl;
+        cout << " 8. Arbol de extension minima PRIM " << endl;
+        cout << " 9. Salir" << endl;
         cout << " Ingrese una opcion: ";
         cin >> opt;
         cout << endl;
@@ -33,15 +34,15 @@ int main() {
             // preguntar Elemento a insertar
             cout << "Elemento a insertar: ";
             cin >> elm;
-            lista.insertarNodo(elm); //con esto podemos llamar a la clase Lista como lista. y la funcion con el elemento enviado
+            graph.insertarNodo(elm); //con esto podemos llamar a la clase Lista como graph. y la funcion con el elemento enviado
             break;
         case 2:
-            // Añadir adjacencia
+            // Aï¿½adir adjacencia
             cout << "Elemento a: \n";
             cin >> elmA;				 //Se necesita enviar el nodo donde se registrara la adyacencia
             cout << "Elemento b: \n";
-            cin >> elm;					// Y el que se el añadira a ese como el adyacente
-            lista.addAdjacency(elmA, elm);//Ahora llamamos a la funcion
+            cin >> elm;					// Y el que se el aï¿½adira a ese como el adyacente
+            graph.addAdjacency(elmA, elm);//Ahora llamamos a la funcion
             break;
         case 3:
             // preguntar por adjacencia
@@ -50,7 +51,7 @@ int main() {
             cout << "Elemento b: ";
             cin >> elm;
                 //Con esta funcion nos devuelve un valor donde si es true el elmA es adyacente a elmB
-            if (lista.isAdj(elmA, elm)) {
+            if (graph.isAdj(elmA, elm)) {
                 cout << "Elemento a=" << elmA << " SI es adyacente a b=" << elm
                      << "\n";
             }//Si no es que los elementos enviados no son adyacentes
@@ -61,27 +62,31 @@ int main() {
             break;
         case 4:
             // mostrar nodos
-            lista.imprimir();
+            graph.imprimir();
             break;
         case 5:
             // mostarAdjacencia
             cout << "Nodo a: ";
             cin >> elmA;
-            lista.imprimirAdj(elmA);//Para mostrar la adyencencia se le envia el nodo que queramos imprimir sus adyacentes
+            graph.imprimirAdj(elmA);//Para mostrar la adyencencia se le envia el nodo que queramos imprimir sus adyacentes
             break;
         case 6:
             //Recorrido a lo ancho
             cout << "Nodo inicial a: ";
             cin >> elmA;
-            lista.pathWidth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por anchura
+            graph.pathWidth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por anchura
             break;
         case 7:
-            //Recorrido a lo ancho
+            //Recorrido a lo Profundo
             cout << "Nodo inicial a: ";
             cin >> elmA;
-            lista.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            graph.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
         case 8:
+            //Arbol de extension minima PRIM
+            cout << "Nodo inicial a: ";
+            cin >> elmA;
+            graph.TREEPRIM(elmA);
             break;
         default:
             opt = 8;
