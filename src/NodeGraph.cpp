@@ -1,4 +1,5 @@
 #include "NodeGraph.h"
+#include <climits>
 #include <iostream>
 
 using namespace std;
@@ -9,6 +10,9 @@ NodeGraph::NodeGraph() {
     visited = 0;
     adj = nullptr;
     next = nullptr;
+    leastWeight = INT_MAX;
+    leastNode = 0;
+
 }
 //Dentro de la funcion llamamos a la otra funcion enviando el puntero adj
 void NodeGraph::printAdj() { NodeAdj::printList(adj); }
