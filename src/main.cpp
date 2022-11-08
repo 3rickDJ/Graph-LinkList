@@ -27,7 +27,7 @@ int main() {
         cout << " Ingrese una opcion: ";
         cin >> opt;
         cout << endl;
-
+//nuevo comentario
         // Mostrar opciones
         switch (opt) {
         case 1:

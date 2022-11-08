@@ -31,13 +31,13 @@ void Graph::imprimir() { NodeGraph::printList(pGraph); }
 void Graph::imprimirAdj(int elm) {
 	//Definimos un puntero donde este sea igual al valor que nos devuelve la funcion NodeGraph con pGraph y el elm
     NodeGraph *p = NodeGraph::find(pGraph, elm);
-    //Si este es igual a nullptr 
+    //Si este es igual a nullptr
     if (p == nullptr) {
-    	//Quiere decir que el nodo no existe 
+    	//Quiere decir que el nodo no existe
         cout << "Nodo no encontrado\n";
     } //De otro modo
 		else {
-    	//Imprimimos el elemento 
+    	//Imprimimos el elemento
         cout << "[" << elm << "]\n |\n V\n";
         //Y ahora imprimimos la lista con el valor de p en su campo adj
         NodeAdj::printList(p->adj);
@@ -85,9 +85,9 @@ void Graph::addAdj(NodeGraph *nodoGrafo, int elm, int peso) {
     //Aqui se le agrega un peso en su campo weigth
     nuevoNodo->weight = peso;
 
-    //Si en el nodoGrafo en su campo adj es igual a null quiere decir que no hay elementos por lo que 
+    //Si en el nodoGrafo en su campo adj es igual a null quiere decir que no hay elementos por lo que
     if (nodoGrafo->adj == nullptr) {
-    	//Es el primero que se le a�ade 
+    	//Es el primero que se le a�ade
         nodoGrafo->adj = nuevoNodo;
     } //Por lo menos tiene un dato
 		else {
@@ -117,12 +117,12 @@ void Graph::pathWidth(int elm) {
 }
 
 void Graph::printWidthPath(NodeGraph *p) {
-	//Definimos como llamaremos a la clase para sus funciones 
+	//Definimos como llamaremos a la clase para sus funciones
     Queue cola;
     NodeGraph *aux = p; //Un puntero aux con el valor de p
     marcarVisitado(p); //Mandamos a llamar a la funcion para que se marque como visitado a p
     int valor2; 		//Declaramos un valor2 que sera utilizado para guardar los valores en el ciclo
-    int valor = p->value;	//La variable valor va a tener el elemento que tiene p en su campo value 
+    int valor = p->value;	//La variable valor va a tener el elemento que tiene p en su campo value
     cola.encolar(valor);	//mandamos a llamar a la funcion encolar de cola
     //Mientras el primer valor dee cola tenga datos
 	while (cola.primero() != 0) {
@@ -173,7 +173,7 @@ void Graph::restoreVisited() {
     NodeGraph *iter = pGraph;
     //Mientras tenga datos
     while (iter != nullptr) {
-    	//El valor de iter en el campo visited es igual a 
+    	//El valor de iter en el campo visited es igual a
 		iter->visited = 0;
         iter = iter->next; //Recorremos la lista (iter)
     }
