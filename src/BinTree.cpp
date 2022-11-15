@@ -69,3 +69,10 @@ void BinTree::pathInOrden(NodoTree *root) {
         pathInOrden(root->right);
     }
 }
+
+void BinTree::MostrarElementos() {}
+void BinTree::BuscarPadre(int elm) {}
+void BinTree::BuscarHermano(int elm) {}
+void BinTree::Descendientes(int elm) {}
+void BinTree::Nivel(int elm) {}
+void BinTree::Altura(int elm) {}
