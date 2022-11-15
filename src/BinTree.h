@@ -7,6 +7,7 @@ class BinTree {
     void pathPostOrden(NodoTree *root);
     void pathInOrden(NodoTree *root);
     void addNodo(int elm, NodoTree * &root, int & level);
+    void findLevel(int elm, NodoTree * &root);
   public:
     NodoTree *pTree;
 

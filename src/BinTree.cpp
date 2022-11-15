@@ -82,7 +82,20 @@ void BinTree::MostrarElementos() {}
 void BinTree::BuscarPadre(int elm) {}
 void BinTree::BuscarHermano(int elm) {}
 void BinTree::Descendientes(int elm) {}
+void BinTree::findLevel(int elm, NodoTree* & root) {
+    if(root != nullptr){
+        if(root->value != elm){
+            findLevel(elm, root->left);
+            findLevel(elm, root->right);
+            //Aqui si el valor en el nodo es igual del valor al que se le envia se imprime su nivel
+        }else{
+            cout << "[" << root->value <<"]=>" << (root->level-1) << "\n";
+        }
+    }
+}
 void BinTree::Nivel(int elm) {
+
+    findLevel(elm, pTree);
 
 }
 void BinTree::Altura(int elm) {}
