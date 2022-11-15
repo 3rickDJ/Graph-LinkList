@@ -20,7 +20,7 @@ void BinTree::insertarNodo(int elm, NodoTree *root) {
     }
 }
 
-//Empezar a hacer recorridos
+//Empezar a hacer recorridos en pre-orden
 void BinTree::PreOrden() {
     if(pTree== nullptr){   // Si el arbol esta vacio entonces no se hace nada
         cout << "El arbol esta vacio\n"; //y se imprime este mensaje
@@ -30,12 +30,13 @@ void BinTree::PreOrden() {
 }
 void BinTree::pathPreOrden(NodoTree *root) {
     if(root != nullptr){
-        cout << root->value <<", ";
+        cout << "[" << root->value <<"],";
         pathPreOrden(root->left);
         pathPreOrden(root->right);
     }
 }
 
+//Camino de recorrido en Post orden
 void BinTree::PostOrden() {
     if(pTree== nullptr){   // Si el arbol esta vacio entonces no se hace nada
         cout << "El arbol esta vacio\n"; //y se imprime este mensaje
@@ -46,8 +47,25 @@ void BinTree::PostOrden() {
 }
 void BinTree::pathPostOrden(NodoTree *root) {
     if(root != nullptr){
-        cout << root->value <<", ";
         pathPostOrden(root->left);
         pathPostOrden(root->right);
+        cout << "[" << root->value <<"],";
+    }
+}
+
+//Camino de recorrido en orden
+void BinTree::InOrden() {
+    if(pTree== nullptr){   // Si el arbol esta vacio entonces no se hace nada
+        cout << "El arbol esta vacio\n"; //y se imprime este mensaje
+    }else{
+        pathInOrden(pTree); //Caso contrario, si el arbol tiene elementos vamos a llamar a la funcion pathPreOrden
+        cout << "\n";
+    }
+}
+void BinTree::pathInOrden(NodoTree *root) {
+    if(root != nullptr){
+        pathInOrden(root->left);
+        cout << "[" << root->value <<"],";
+        pathInOrden(root->right);
     }
 }
