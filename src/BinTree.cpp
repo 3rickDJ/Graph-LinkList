@@ -8,7 +8,8 @@ BinTree::BinTree() {
 }
 
 //insertar el nodo en el arbol
-void BinTree::insertarNodo(int elm, NodoTree *root) {
+                        //Apuntador por referen
+void BinTree::insertarNodo(int elm, NodoTree * &root) {
     if(root== nullptr){ // Si no hay elementos en la raíz, inserta un nuevo nodo
         root = new NodoTree(elm);
     }else{  // Si no, inserta elementos a la derecha o a la izquierda del nodo seleccionado

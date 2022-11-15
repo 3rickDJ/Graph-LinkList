@@ -11,7 +11,7 @@ class BinTree {
 
     BinTree();
     //Funciones del Menu
-    void insertarNodo(int elm, NodoTree *root);
+    void insertarNodo(int elm, NodoTree * &root);
 
     void MostrarElementos();
 
