@@ -5,7 +5,7 @@
 class BinTree {
     NodoTree *pTree;
     void pathPreOrden(NodoTree *root);
-    void pathPosOrden(NodoTree *root);
+    void pathPostOrden(NodoTree *root);
     void pathInOrden(NodoTree *root);
     public:
 

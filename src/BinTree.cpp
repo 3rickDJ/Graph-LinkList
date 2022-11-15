@@ -1,4 +1,6 @@
 #include "BinTree.h"
+#include <iostream>
+using namespace std;
 
 BinTree::BinTree() {
     //Asignacion de valor a pTree
@@ -18,5 +20,34 @@ void BinTree::insertarNodo(int elm, NodoTree *root) {
     }
 }
 
+//Empezar a hacer recorridos
+void BinTree::PreOrden() {
+    if(pTree== nullptr){   // Si el arbol esta vacio entonces no se hace nada
+        cout << "El arbol esta vacio\n"; //y se imprime este mensaje
+    }else{
+        pathPreOrden(pTree); //Caso contrario, si el arbol tiene elementos vamos a llamar a la funcion pathPreOrden
+    }
+}
+void BinTree::pathPreOrden(NodoTree *root) {
+    if(root != nullptr){
+        cout << root->value <<", ";
+        pathPreOrden(root->left);
+        pathPreOrden(root->right);
+    }
+}
 
-
+void BinTree::PostOrden() {
+    if(pTree== nullptr){   // Si el arbol esta vacio entonces no se hace nada
+        cout << "El arbol esta vacio\n"; //y se imprime este mensaje
+    }else{
+        pathPostOrden(pTree); //Caso contrario, si el arbol tiene elementos vamos a llamar a la funcion pathPreOrden
+        cout << "\n";
+    }
+}
+void BinTree::pathPostOrden(NodoTree *root) {
+    if(root != nullptr){
+        cout << root->value <<", ";
+        pathPostOrden(root->left);
+        pathPostOrden(root->right);
+    }
+}
