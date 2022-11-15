@@ -3,11 +3,11 @@
 
 #pragma  once
 class BinTree {
-    NodoTree *pTree;
     void pathPreOrden(NodoTree *root);
     void pathPostOrden(NodoTree *root);
     void pathInOrden(NodoTree *root);
-    public:
+  public:
+    NodoTree *pTree;
 
     BinTree();
     //Funciones del Menu
