@@ -30,7 +30,7 @@ void BinTree::PreOrden() {
 }
 void BinTree::pathPreOrden(NodoTree *root) {
     if(root != nullptr){
-        cout << "[" << root->value <<"],";
+        cout << "[" << root->value <<"], ";
         pathPreOrden(root->left);
         pathPreOrden(root->right);
     }
@@ -49,7 +49,7 @@ void BinTree::pathPostOrden(NodoTree *root) {
     if(root != nullptr){
         pathPostOrden(root->left);
         pathPostOrden(root->right);
-        cout << "[" << root->value <<"],";
+        cout << "[" << root->value <<"], ";
     }
 }
 
@@ -65,7 +65,7 @@ void BinTree::InOrden() {
 void BinTree::pathInOrden(NodoTree *root) {
     if(root != nullptr){
         pathInOrden(root->left);
-        cout << "[" << root->value <<"],";
+        cout << "[" << root->value <<"], ";
         pathInOrden(root->right);
     }
 }
