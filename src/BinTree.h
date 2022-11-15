@@ -5,8 +5,10 @@
 class BinTree {
     NodoTree *pTree;
     public:
+
+    BinTree();
     //Funciones del Menu
-    void insertarNodo(int elm);
+    void insertarNodo(int elm, NodoTree *root);
 
     void MostrarElementos();
 
