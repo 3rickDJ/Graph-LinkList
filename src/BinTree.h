@@ -4,6 +4,7 @@
 #pragma  once
 class BinTree {
     NodoTree *pTree;
+    public:
     //Funciones del Menu
     void insertarNodo(elm);
 
