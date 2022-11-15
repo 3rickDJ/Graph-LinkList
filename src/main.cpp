@@ -1,5 +1,5 @@
 // incluir header de la clase Graph
-#include "Graph.h"
+#include "BinTree.h"
 #include "iostream"
 using std::cin;
 using std::cout;
@@ -7,7 +7,7 @@ using std::endl;
 int main() {
 		//Delcaramos nuestras variables para usar dentro del menu
     int opt, elm, elmA, weight;
-    Graph arbol; //Con esto hacemos un llamado de la clase Graph a arbol
+    BinTree arbol; //Con esto hacemos un llamado de la clase Arbol a arbol
     do {
         cout << "=============================================================="
              << endl;
@@ -86,19 +86,19 @@ int main() {
             //Recorrido a lo Preorden
             cout << "Nodo inicial a: ";
             cin >> elmA;
-            arbol.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            arbol.PreOrden(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
         case 9:
             //Recorrido a lo Post-Orden
             cout << "Nodo inicial a: ";
             cin >> elmA;
-            arbol.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            arbol.PostOrden(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
         case 10:
             //Recorrido a lo In-Orden
             cout << "Nodo inicial a: ";
             cin >> elmA;
-            arbol.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            arbol.InOrden(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
         case 11:
             cout << "Adios...\n ";
