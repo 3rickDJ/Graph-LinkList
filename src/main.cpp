@@ -7,7 +7,7 @@ using std::endl;
 int main() {
 		//Delcaramos nuestras variables para usar dentro del menu
     int opt, elm, elmA, weight;
-    Graph graph; //Con esto hacemos un llamado de la clase Graph a graph
+    Graph arbol; //Con esto hacemos un llamado de la clase Graph a arbol
     do {
         cout << "=============================================================="
              << endl;
@@ -16,83 +16,96 @@ int main() {
         cout << "=============================================================="
              << endl;
         cout << " 1. Insertar nodo" << endl;
-        cout << " 2. Añadir adjacencia " << endl;
-        cout << " 3. Son adjacentes" << endl;
-        cout << " 4. Mostrar nodos" << endl;
-        cout << " 5. Mostrar adjacencia (dado un nodo)" << endl;
-        cout << " 6. Recorrido a lo ancho" << endl;
-        cout << " 7. Recorrido en profundidad" << endl;
-        cout << " 8. Arbol de extension minima PRIM " << endl;
-        cout << " 9. Salir" << endl;
+        cout << " 2. Mostra arbol" << endl;
+        cout << " Dado un nodo" << endl;
+        cout << " 3. Hallar padre " << endl;
+        cout << " 4. Hallar hermano " << endl;
+        cout << " 5. Descendientes " << endl;
+        cout << " 6. Nivel" << endl;
+        cout << " 7. Altura" << endl;
+        cout << " 8. Recorrido en Pre-orden" << endl;
+        cout << " 9. Recorrido en Pos-orden" << endl;
+        cout << " 10. Recorrido en In-orden" << endl;
+        cout << " 11. Salir" << endl;
         cout << " Ingrese una opcion: ";
         cin >> opt;
         cout << endl;
-//nuevo comentario
         // Mostrar opciones
         switch (opt) {
         case 1:
             // preguntar Elemento a insertar
             cout << "Elemento a insertar: ";
             cin >> elm;
-            graph.insertarNodo(elm); //con esto podemos llamar a la clase Lista como graph. y la funcion con el elemento enviado
+            arbol.insertarNodo(elm); //con esto podemos llamar a la clase Lista como arbol. y la funcion con el elemento enviado
             break;
         case 2:
-            // A�adir adjacencia
-            cout << "Elemento a: \n";
-            cin >> elmA;				 //Se necesita enviar el nodo donde se registrara la adyacencia
-            cout << "Elemento b: \n";
-            cin >> elm;					// Y el que se el a�adira a ese como el adyacente
-            cout << "Peso entre a y b\n";
-            cin >> weight;
-            graph.addAdjacency(elmA, elm, weight);//Ahora llamamos a la funcion
+            //Mostrar los elementos del arbol
+            arbol.MostrarElementos();
             break;
         case 3:
-            // preguntar por adjacencia
-            cout << "Elemento a: ";
-            cin >> elmA;
-            cout << "Elemento b: ";
-            cin >> elm;
-                //Con esta funcion nos devuelve un valor donde si es true el elmA es adyacente a elmB
-            if (graph.isAdj(elmA, elm)) {
-                cout << "Elemento a=" << elmA << " SI es adyacente a b=" << elm
-                     << "\n";
-            }//Si no es que los elementos enviados no son adyacentes
-			 else {
-                cout << "Elemento a=" << elmA << " NO es adyacente a b=" << elm
-                     << "\n";
-            }
+            //Encontrar Padre dado el Nodo
+            //Se pregunta por el nodo
+            cout << "Dame el elemento a buscar su padre: ";
+            cin  >> elm;
+            //Ahora la funcion a llamar pasamos el valor anterior
+            arbol.BuscarPadre(elm);
             break;
         case 4:
-            // mostrar nodos
-            graph.imprimir();
+            //Encontrar Hermano dado el Nodo
+            //Se pregunta por el nodo
+            cout << "Dame el elemento a buscar su Hermano: ";
+            cin  >> elm;
+            //Ahora la funcion a llamar pasamos el valor anterior
+            arbol.BuscarHermano(elm);
             break;
         case 5:
-            // mostarAdjacencia
-            cout << "Nodo a: ";
-            cin >> elmA;
-            graph.imprimirAdj(elmA);//Para mostrar la adyencencia se le envia el nodo que queramos imprimir sus adyacentes
+            //Encontrar Descendientes dado el Nodo
+            //Se pregunta por el nodo
+            cout << "Dame el elemento a buscar su(s) Descendientes: ";
+            cin  >> elm;
+            //Ahora la funcion a llamar pasamos el valor anterior
+            arbol.Descendientes(elm);
             break;
         case 6:
-            //Recorrido a lo ancho
-            cout << "Nodo inicial a: ";
-            cin >> elmA;
-            graph.pathWidth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por anchura
+            //Encontrar el Nivel dado el Nodo
+            //Se pregunta por el nodo
+            cout << "Dame el elemento a buscar su Nivel: ";
+            cin  >> elm;
+            //Ahora la funcion a llamar pasamos el valor anterior
+            arbol.Nivel(elm);
             break;
         case 7:
-            //Recorrido a lo Profundo
-            cout << "Nodo inicial a: ";
-            cin >> elmA;
-            graph.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            //Encontrar la Altura dado el Nodo
+            // Se pregunta por el nodo
+            cout << "Dame el elemento a buscar su Altura: ";
+            cin  >> elm;
+            //Ahora la funcion a llamar pasamos el valor anterior
+            arbol.Altura(elm);
             break;
         case 8:
-            //Arbol de extension minima PRIM
+            //Recorrido a lo Preorden
             cout << "Nodo inicial a: ";
             cin >> elmA;
-            graph.TREEPRIM(elmA);
+            arbol.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            break;
+        case 9:
+            //Recorrido a lo Post-Orden
+            cout << "Nodo inicial a: ";
+            cin >> elmA;
+            arbol.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            break;
+        case 10:
+            //Recorrido a lo In-Orden
+            cout << "Nodo inicial a: ";
+            cin >> elmA;
+            arbol.pathDepth(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            break;
+        case 11:
+            cout << "Adios...\n ";
             break;
         default:
-            opt = 9;
+            opt = 11;
             cout << "Opcion no valida.\nSaliendo\n";
         }
-    } while (opt != 9);
+    } while (opt != 11);
 }
