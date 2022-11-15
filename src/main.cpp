@@ -83,22 +83,13 @@ int main() {
             arbol.Altura(elm);
             break;
         case 8:
-            //Recorrido a lo Preorden
-            cout << "Nodo inicial a: ";
-            cin >> elmA;
-            arbol.PreOrden(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            arbol.PreOrden();
             break;
         case 9:
-            //Recorrido a lo Post-Orden
-            cout << "Nodo inicial a: ";
-            cin >> elmA;
-            arbol.PostOrden(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            arbol.PostOrden();
             break;
         case 10:
-            //Recorrido a lo In-Orden
-            cout << "Nodo inicial a: ";
-            cin >> elmA;
-            arbol.InOrden(elmA); //Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
+            arbol.InOrden();
             break;
         case 11:
             cout << "Adios...\n ";
