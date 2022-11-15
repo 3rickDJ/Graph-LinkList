@@ -6,12 +6,13 @@ class BinTree {
     void pathPreOrden(NodoTree *root);
     void pathPostOrden(NodoTree *root);
     void pathInOrden(NodoTree *root);
+    void addNodo(int elm, NodoTree * &root, int & level);
   public:
     NodoTree *pTree;
 
     BinTree();
     //Funciones del Menu
-    void insertarNodo(int elm, NodoTree * &root);
+    void insertarNodo(int elm);
 
     void MostrarElementos();
 

@@ -15,5 +15,22 @@ NodoTree::NodoTree(int value) {
     visited  = 0;
     left = nullptr;
     right = nullptr;
+    left = 0;
+    level = 0;
 }
 
+void NodoTree::operator=(const NodoTree &other) {
+        this->value = other.value;
+        this->left = other.left;
+        this->right = other.right;
+        this->visited = other.visited;
+}
+//Sobrecarga de operadores
+NodoTree::NodoTree(int value, int level) {
+    this->value = value;
+    visited  = 0;
+    left = nullptr;
+    right = nullptr;
+    left = 0;
+    this->level = level;
+}

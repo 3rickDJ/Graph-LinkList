@@ -36,7 +36,7 @@ int main() {
             // preguntar Elemento a insertar
             cout << "Elemento a insertar: ";
             cin >> elm;
-            arbol.insertarNodo(elm, arbol.pTree); //con esto podemos llamar a la clase Lista como arbol. y la funcion con el elemento enviado
+            arbol.insertarNodo(elm); //con esto podemos llamar a la clase Lista como arbol. y la funcion con el elemento enviado
             break;
         case 2:
             //Mostrar los elementos del arbol
@@ -83,13 +83,13 @@ int main() {
             arbol.Altura(elm);
             break;
         case 8:
-            arbol.PreOrden();
+            arbol.PreOrden();//Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
         case 9:
-            arbol.PostOrden();
+            arbol.PostOrden();//Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
         case 10:
-            arbol.InOrden();
+            arbol.InOrden();//Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
         case 11:
             cout << "Adios...\n ";
