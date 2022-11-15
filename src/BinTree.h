@@ -4,6 +4,9 @@
 #pragma  once
 class BinTree {
     NodoTree *pTree;
+    void pathPreOrden(NodoTree *root);
+    void pathPosOrden(NodoTree *root);
+    void pathInOrden(NodoTree *root);
     public:
 
     BinTree();
@@ -22,9 +25,9 @@ class BinTree {
 
     void Altura(int elm);
 
-    void PreOrden(int elm);
+    void PreOrden();
 
-    void PostOrden(int elem);
+    void PostOrden();
 
-    void InOrden(int elm);
+    void InOrden();
 };
