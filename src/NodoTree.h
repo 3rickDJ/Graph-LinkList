@@ -14,5 +14,6 @@ class NodoTree {
     static NodoTree *find(NodoTree *inicio, int elm);
     //Este sera para imprimir la lista desde el puntero "inicio"
     static void printList(NodoTree *inicio);
-     */
+    }
+    */
 };
