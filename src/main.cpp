@@ -36,7 +36,7 @@ int main() {
             // preguntar Elemento a insertar
             cout << "Elemento a insertar: ";
             cin >> elm;
-            arbol.insertarNodo(elm); //con esto podemos llamar a la clase Lista como arbol. y la funcion con el elemento enviado
+            arbol.insertarNodo(elm, nullptr); //con esto podemos llamar a la clase Lista como arbol. y la funcion con el elemento enviado
             break;
         case 2:
             //Mostrar los elementos del arbol
