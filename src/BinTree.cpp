@@ -11,6 +11,7 @@ BinTree::BinTree() {
 //Variable para saber cuantas veces hemos llamado a la funcion insertarNodo
 
 void BinTree::addNodo(int elm, NodoTree *&root, int &level) {
+    level += 1;
     if(root== nullptr){ // Si no hay elementos en la raíz, inserta un nuevo nodo
         root = new NodoTree(elm, level);
     }else{  // Si no, inserta elementos a la derecha o a la izquierda del nodo seleccionado
@@ -19,7 +20,6 @@ void BinTree::addNodo(int elm, NodoTree *&root, int &level) {
         }else{ // si no, se va a la derecha
             addNodo(elm, root->right, level);
         }
-        level += 1;
     }
 }
 
