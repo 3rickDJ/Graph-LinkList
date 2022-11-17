@@ -105,7 +105,6 @@ void BinTree::Descendientes(int elm) {
     }else{
         buscarDescendientes(elm, pTree); // si no, se va a la funcion buscar padre
     }
-
 }
 
 
@@ -174,4 +173,20 @@ void BinTree::buscarHermano(int elm, NodoTree *&root) {
     }
 }
 
-void BinTree::buscarDescendientes(int elm, NodoTree *&root) {}
+void BinTree::buscarDescendientes(int elm, NodoTree *&root) {
+    //Mientras el nodo sea diferente de null
+    if(root!= nullptr){
+        //Si el nodo en su campo izquierdo es diferente de null y en su campo valor es igual al elem enviado
+        if(root->left != nullptr && root->left->value == elm){
+            pathPreOrden(root->left);
+            return;
+        }
+        //hacemos lo mismo pero con el nodo derecho
+        if(root->right != nullptr && root->right->value == elm){
+            pathPreOrden(root->right);
+            return ;
+        }
+        buscarDescendientes(elm, root->right);
+        buscarDescendientes(elm, root->left);
+    }
+}
