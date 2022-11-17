@@ -10,7 +10,7 @@ class BinTree {
     void findLevel(int elm, NodoTree * &root);
     void buscarPadre(int elm, NodoTree *&root);
     void buscarHermano(int elm, NodoTree *&root);
-    void buscarDescendientes(int elm, NodoTree *&root, bool &isChild);
+    void buscarDescendientes(int elm, NodoTree *&root);
   public:
     NodoTree *pTree;
     int height;
