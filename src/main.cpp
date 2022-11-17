@@ -16,17 +16,16 @@ int main() {
         cout << "=============================================================="
              << endl;
         cout << " 1. Insertar nodo" << endl;
-        cout << " 2. Mostra arbol" << endl;
         cout << " Dado un nodo" << endl;
-        cout << " 3. Hallar padre " << endl;
-        cout << " 4. Hallar hermano " << endl;
-        cout << " 5. Descendientes " << endl;
-        cout << " 6. Nivel" << endl;
-        cout << " 7. Altura" << endl;
-        cout << " 8. Recorrido en Pre-orden" << endl;
-        cout << " 9. Recorrido en Pos-orden" << endl;
-        cout << " 10. Recorrido en In-orden" << endl;
-        cout << " 11. Salir" << endl;
+        cout << " 2. Hallar padre " << endl;
+        cout << " 3. Hallar hermano " << endl;
+        cout << " 4. Descendientes " << endl;
+        cout << " 5. Nivel" << endl;
+        cout << " 6. Altura" << endl;
+        cout << " 7. Recorrido en Pre-orden" << endl;
+        cout << " 8. Recorrido en Pos-orden" << endl;
+        cout << " 9. Recorrido en In-orden" << endl;
+        cout << " 10. Salir" << endl;
         cout << " Ingrese una opcion: ";
         cin >> opt;
         cout << endl;
@@ -39,10 +38,6 @@ int main() {
             arbol.insertarNodo(elm); //con esto podemos llamar a la clase Lista como arbol. y la funcion con el elemento enviado
             break;
         case 2:
-            //Mostrar los elementos del arbol
-            arbol.MostrarElementos();
-            break;
-        case 3:
             //Encontrar Padre dado el Nodo
             //Se pregunta por el nodo
             cout << "Dame el elemento a buscar su padre: ";
@@ -50,7 +45,7 @@ int main() {
             //Ahora la funcion a llamar pasamos el valor anterior
             arbol.BuscarPadre(elm);
             break;
-        case 4:
+        case 3:
             //Encontrar Hermano dado el Nodo
             //Se pregunta por el nodo
             cout << "Dame el elemento a buscar su Hermano: ";
@@ -58,7 +53,7 @@ int main() {
             //Ahora la funcion a llamar pasamos el valor anterior
             arbol.BuscarHermano(elm);
             break;
-        case 5:
+        case 4:
             //Encontrar Descendientes dado el Nodo
             //Se pregunta por el nodo
             cout << "Dame el elemento a buscar su(s) Descendientes: ";
@@ -66,7 +61,7 @@ int main() {
             //Ahora la funcion a llamar pasamos el valor anterior
             arbol.Descendientes(elm);
             break;
-        case 6:
+        case 5:
             //Encontrar el Nivel dado el Nodo
             //Se pregunta por el nodo
             cout << "Dame el elemento a buscar su Nivel: ";
@@ -74,24 +69,24 @@ int main() {
             //Ahora la funcion a llamar pasamos el valor anterior
             arbol.Nivel(elm);
             break;
-        case 7:
+        case 6:
             //Ahora la funcion a llamar pasamos el valor anterior
             arbol.Altura();
             break;
-        case 8:
+        case 7:
             arbol.PreOrden();//Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
-        case 9:
+        case 8:
             arbol.PostOrden();//Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
-        case 10:
+        case 9:
             arbol.InOrden();//Se tiene que definir el elemento con el que se recorrera el grafo por profundidad
             break;
-        case 11:
+        case 10:
             cout << "Adios...\n ";
             break;
         default:
-            opt = 11;
+            opt = 10;
             cout << "Opcion no valida.\nSaliendo\n";
         }
     } while (opt != 11);
