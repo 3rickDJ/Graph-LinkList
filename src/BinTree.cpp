@@ -100,11 +100,8 @@ void BinTree::BuscarHermano(int elm) {
     }
 }
 void BinTree::Descendientes(int elm) {
-   if(pTree->value == elm){ //Si el elemento es igual a la raiz entonces no tiene padre
-        cout << "La raiz no tiene Descendientes\n";
-    }else{
-        buscarDescendientes(elm, pTree); // si no, se va a la funcion buscar padre
-    }
+    //En este caso no es necesario un if puesto que tambien necesitamos la raiz
+    buscarDescendientes(elm, pTree);
 }
 
 
