@@ -86,8 +86,8 @@ int main() {
             cout << "Adios...\n ";
             break;
         default:
-            opt = 10;
+            opt = 11;
             cout << "Opcion no valida.\nSaliendo\n";
         }
-    } while (opt != 11);
+    } while (opt != 10);
 }

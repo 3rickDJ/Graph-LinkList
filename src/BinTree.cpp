@@ -82,10 +82,21 @@ void BinTree::pathInOrden(NodoTree *root) {
         pathInOrden(root->right);
     }
 }
-void BinTree::MostrarElementos() {}
-void BinTree::BuscarPadre(int elm) {}
+
+void BinTree::BuscarPadre(int elm) {
+    if(pTree->value == elm){ //Si el elemento es igual a la raiz entonces no tiene padre
+        cout << "La raiz no tiene un nodo padre\n";
+    }else{
+        buscarPadre(elm, pTree); // si no, se va a la funcion buscar padre
+    }
+}
+
+
+
 void BinTree::BuscarHermano(int elm) {}
 void BinTree::Descendientes(int elm) {}
+
+
 void BinTree::findLevel(int elm, NodoTree* & root) {
     if(root != nullptr){
         if(root->value != elm){
@@ -104,4 +115,23 @@ void BinTree::Nivel(int elm) {
 }
 void BinTree::Altura() {
     cout << "La altura es: " << height << "\n";
+}
+
+void BinTree::buscarPadre(int elm, NodoTree *&root) {
+    //Mientras el nodo sea diferente de null
+    if(root!= nullptr){
+        //Si el nodo en su campo izquierdo es diferente de null y en su campo valor es igual al elem enviado
+        if(root->left != nullptr && root->left->value == elm){
+            //Imprimimos el valor del nodo
+            cout << "El padre: " << root->value << "\n";
+            return;
+        }
+        //hacemos lo mismo pero con el nodo derecho
+        if(root->right != nullptr && root->right->value == elm){
+            cout << "El padre: " << root->value << "\n";
+            return ;
+        }
+        buscarPadre(elm, root->right);
+        buscarPadre(elm, root->left);
+    }
 }
