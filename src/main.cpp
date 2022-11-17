@@ -75,12 +75,8 @@ int main() {
             arbol.Nivel(elm);
             break;
         case 7:
-            //Encontrar la Altura dado el Nodo
-            // Se pregunta por el nodo
-            cout << "Dame el elemento a buscar su Altura: ";
-            cin  >> elm;
             //Ahora la funcion a llamar pasamos el valor anterior
-            arbol.Altura(elm);
+            arbol.Altura();
             break;
         case 8:
             arbol.PreOrden();//Se tiene que definir el elemento con el que se recorrera el grafo por profundidad

@@ -5,6 +5,7 @@ using namespace std;
 BinTree::BinTree() {
     //Asignacion de valor a pTree
     pTree = nullptr;
+    height = 0;
 }
 
 //insertar el nodo en el arbol
@@ -14,6 +15,9 @@ void BinTree::addNodo(int elm, NodoTree *&root, int &level) {
     level += 1;
     if(root== nullptr){ // Si no hay elementos en la raíz, inserta un nuevo nodo
         root = new NodoTree(elm, level);
+        //Solo cuando se encuentre un nodo hoja  puesto que aqui solo se actualiza cuando el nivel sea mayor a altura se actualiza altura
+        if(height<level)
+            height = level;
     }else{  // Si no, inserta elementos a la derecha o a la izquierda del nodo seleccionado
         if(elm <= root->value){ // Si el elemento es menor al del nodo, entonces se va a insertar a la izquierda
             addNodo(elm, root->left, level);
@@ -94,8 +98,10 @@ void BinTree::findLevel(int elm, NodoTree* & root) {
     }
 }
 void BinTree::Nivel(int elm) {
-
+    //Mandamos el elemento y el ptree para recorrer el arbol hasta encontrar el elemento
     findLevel(elm, pTree);
 
 }
-void BinTree::Altura(int elm) {}
+void BinTree::Altura() {
+    cout << "La altura es: " << height << "\n";
+}

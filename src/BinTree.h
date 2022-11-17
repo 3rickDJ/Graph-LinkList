@@ -8,8 +8,12 @@ class BinTree {
     void pathInOrden(NodoTree *root);
     void addNodo(int elm, NodoTree * &root, int & level);
     void findLevel(int elm, NodoTree * &root);
+    void buscarPadre(int elm, NodoTree *&root);
+    void buscarHermano(int elm, NodoTree *&root);
+    void buscarDescendientes(int elm, NodoTree *&root, bool &isChild);
   public:
     NodoTree *pTree;
+    int height;
 
     BinTree();
     //Funciones del Menu
@@ -25,7 +29,7 @@ class BinTree {
 
     void Nivel(int elm);
 
-    void Altura(int elm);
+    void Altura();
 
     void PreOrden();
 
