@@ -100,8 +100,11 @@ void BinTree::BuscarHermano(int elm) {
     }
 }
 void BinTree::Descendientes(int elm) {
-    //En este caso no es necesario un if puesto que tambien necesitamos la raiz
-    buscarDescendientes(elm, pTree);
+    if(elm == pTree->value){ //Si el elemento inicial es la raiz vamos a llamar la funcion pathPreOrden
+        pathPreOrden(pTree); //Le pasaremos directamente de parametros la raiz
+    }else { //
+        buscarDescendientes(elm, pTree);
+    }
 }
 
 
